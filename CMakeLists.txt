@@ -7,31 +7,41 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 6.2 REQUIRED COMPONENTS Quick)
 
+set(CONFIG_FILE "${CMAKE_CURRENT_SOURCE_DIR}/config.yaml")
 
 qt_add_executable(appPBL
     main.cpp
+    ${CONFIG_FILE}
 )
 
 qt_add_qml_module(appPBL
     URI PBL
     VERSION 1.0
-    QML_FILES
-        Main.qml
-)
+    QML_FILES Main.qml
+    QML_FILES Climate/src/Climate.qml Dashboard/src/Dashboard.qml Media/src/Media.qml
+    QML_FILES CustomTabButton.qml
 
-# Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
-# If you are developing for iOS or macOS you should consider setting an
-# explicit, fixed bundle identifier manually though.
-set_target_properties(appPBL PROPERTIES
-#    MACOSX_BUNDLE_GUI_IDENTIFIER com.example.appPBL
-    MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
-    MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
-    MACOSX_BUNDLE TRUE
-    WIN32_EXECUTABLE TRUE
 )
 
 target_link_libraries(appPBL
     PRIVATE Qt6::Quick
+)
+
+if(EXISTS ${CONFIG_FILE})
+    add_custom_command(TARGET appPBL POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        ${CONFIG_FILE}
+        $<TARGET_FILE_DIR:appPBL>)
+else()
+    message(WARNING "Configuration file ${CONFIG_FILE} not found!")
+endif()
+
+set_target_properties(appPBL PROPERTIES
+    MACOSX_BUNDLE_GUI_IDENTIFIER com.example.appPBL
+    MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
+    MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
+    MACOSX_BUNDLE TRUE
+    WIN32_EXECUTABLE TRUE
 )
 
 include(GNUInstallDirs)
