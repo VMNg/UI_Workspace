@@ -3,19 +3,39 @@ import QtQuick.Controls 2.15
 
 Item {
     width: 1080
-    height: 720
+    height: 670
 
     Rectangle {
+        id: mainScreen
         anchors.fill: parent
         color: "#1e1e1e"
 
-        Text {
-            anchors.centerIn: parent
-            text: "Media Player..."
-            color: "white"
-            font.pixelSize: 24
+        Rectangle {
+            id: centerMusic
+            anchors {
+                left: mainScreen.left
+                top: mainScreen.top
+            }
+            width: 720
+            height: 670
+            color: "yellow"
+
+            ControlMedia{
+                anchors{
+                    bottom: parent.bottom
+                }
+            }
         }
 
-        // TODO: Add media player components (album art, track info, playback controls, etc.)
+        Rectangle {
+            id: listMusic
+            anchors {
+                right: mainScreen.right
+                top: mainScreen.top
+            }
+            width: 360
+            height: 670
+            color: "black"
+        }
     }
 }
