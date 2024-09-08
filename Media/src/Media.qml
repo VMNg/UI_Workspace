@@ -11,7 +11,7 @@ Item {
 
         Text {
             anchors.centerIn: parent
-            text: "Media Player"
+            text: "Media Player..."
             color: "white"
             font.pixelSize: 24
         }
