@@ -3,13 +3,16 @@ cmake_minimum_required(VERSION 3.16)
 project(PBL VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 6.2 REQUIRED COMPONENTS Quick)
+find_package(Qt6 REQUIRED COMPONENTS Multimedia)
 
 set(CONFIG_FILE "${CMAKE_CURRENT_SOURCE_DIR}/config.yaml")
 
 qt_add_executable(appPBL
+    Media/images.qrc
     main.cpp
     ${CONFIG_FILE}
 )
@@ -18,14 +21,18 @@ qt_add_qml_module(appPBL
     URI PBL
     VERSION 1.0
     QML_FILES Main.qml
-    QML_FILES Climate/src/Climate.qml Dashboard/src/Dashboard.qml Media/src/Media.qml
+    QML_FILES Climate/src/Climate.qml Dashboard/src/Dashboard.qml Media/src/Media.qml Media/src/ControlMedia.qml
     QML_FILES CustomTabButton.qml
-
+    RESOURCES Media/images.qrc
+    # SOURCES Media/enginemedia.h Media/enginemedia.cpp
 )
 
 target_link_libraries(appPBL
     PRIVATE Qt6::Quick
+        Qt6::Core
+        Qt6::Multimedia
 )
+
 
 if(EXISTS ${CONFIG_FILE})
     add_custom_command(TARGET appPBL POST_BUILD
