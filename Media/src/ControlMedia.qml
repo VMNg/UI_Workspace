@@ -1,16 +1,22 @@
 import QtQuick 2.15
+import PlayerControl 1.0
 
 Item {
     id: controlMedia
     width:720
     height:120
 
+    MediaControl{
+        id: playerControl
+    }
+
     Rectangle {
+        id: containerControl
         anchors.fill: parent
         color: "grey"
         Row{
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.verticalCenter: parent.verticalCenter
+            anchors.horizontalCenter: containerControl.horizontalCenter
+            anchors.verticalCenter: containerControl.verticalCenter
             spacing: 80
 
             Image {
@@ -42,7 +48,7 @@ Item {
                 MouseArea{
                     anchors.fill: parent
                     onClicked: {
-                        console.log("Click Button!!");
+                        playerControl.playClicked();
                     }
                 }
             }
