@@ -1,0 +1,30 @@
+{
+	"BUILD_DIR" : "/home/fr/Moc_project/UI_Workspace/UI_Workspace/build/Desktop_Qt_6_2_4_GCC_64bit-Debug/appPBL_autogen",
+	"CMAKE_BINARY_DIR" : "/home/fr/Moc_project/UI_Workspace/UI_Workspace/build/Desktop_Qt_6_2_4_GCC_64bit-Debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/fr/Moc_project/UI_Workspace/UI_Workspace/build/Desktop_Qt_6_2_4_GCC_64bit-Debug",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/fr/Moc_project/UI_Workspace/UI_Workspace",
+	"CMAKE_SOURCE_DIR" : "/home/fr/Moc_project/UI_Workspace/UI_Workspace",
+	"CROSS_CONFIG" : false,
+	"GENERATOR" : "Unix Makefiles",
+	"INCLUDE_DIR" : "/home/fr/Moc_project/UI_Workspace/UI_Workspace/build/Desktop_Qt_6_2_4_GCC_64bit-Debug/appPBL_autogen/include",
+	"INPUTS" : 
+	[
+		"/home/fr/Moc_project/UI_Workspace/UI_Workspace/Media/iconControlMedia/play-list.png",
+		"/home/fr/Moc_project/UI_Workspace/UI_Workspace/Media/iconControlMedia/stop-button.png",
+		"/home/fr/Moc_project/UI_Workspace/UI_Workspace/Media/iconControlMedia/rewind-button.png",
+		"/home/fr/Moc_project/UI_Workspace/UI_Workspace/Media/iconControlMedia/forward-button.png",
+		"/home/fr/Moc_project/UI_Workspace/UI_Workspace/Media/iconControlMedia/suffle.png",
+		"/home/fr/Moc_project/UI_Workspace/UI_Workspace/Media/iconControlMedia/play-button-arrowhead.png"
+	],
+	"LOCK_FILE" : "/home/fr/Moc_project/UI_Workspace/UI_Workspace/build/Desktop_Qt_6_2_4_GCC_64bit-Debug/CMakeFiles/appPBL_autogen.dir/AutoRcc_images_SURKOIUAET_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "--no-zstd", "-name", "images" ],
+	"OUTPUT_CHECKSUM" : "SURKOIUAET",
+	"OUTPUT_NAME" : "qrc_images.cpp",
+	"RCC_EXECUTABLE" : "/home/fr/Qt/6.2.4/gcc_64/./libexec/rcc",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "/home/fr/Moc_project/UI_Workspace/UI_Workspace/build/Desktop_Qt_6_2_4_GCC_64bit-Debug/CMakeFiles/appPBL_autogen.dir/AutoRcc_images_SURKOIUAET_Used.txt",
+	"SOURCE" : "/home/fr/Moc_project/UI_Workspace/UI_Workspace/Media/images.qrc",
+	"USE_BETTER_GRAPH" : false,
+	"VERBOSITY" : 0
+}

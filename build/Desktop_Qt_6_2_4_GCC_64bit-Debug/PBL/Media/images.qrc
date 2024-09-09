@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>iconControlMedia/forward-button.png</file>
+        <file>iconControlMedia/play-button-arrowhead.png</file>
+        <file>iconControlMedia/play-list.png</file>
+        <file>iconControlMedia/rewind-button.png</file>
+        <file>iconControlMedia/stop-button.png</file>
+        <file>iconControlMedia/suffle.png</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,16 @@
+/home/fr/Moc_project/UI_Workspace/UI_Workspace/build/Desktop_Qt_6_2_4_GCC_64bit-Debug/CMakeFiles/appPBL.dir
+/home/fr/Moc_project/UI_Workspace/UI_Workspace/build/Desktop_Qt_6_2_4_GCC_64bit-Debug/CMakeFiles/appPBL_automoc_json_extraction.dir
+/home/fr/Moc_project/UI_Workspace/UI_Workspace/build/Desktop_Qt_6_2_4_GCC_64bit-Debug/CMakeFiles/appPBL_qmltyperegistration.dir
+/home/fr/Moc_project/UI_Workspace/UI_Workspace/build/Desktop_Qt_6_2_4_GCC_64bit-Debug/CMakeFiles/all_qmltyperegistrations.dir
+/home/fr/Moc_project/UI_Workspace/UI_Workspace/build/Desktop_Qt_6_2_4_GCC_64bit-Debug/CMakeFiles/appPBL_other_files.dir
+/home/fr/Moc_project/UI_Workspace/UI_Workspace/build/Desktop_Qt_6_2_4_GCC_64bit-Debug/CMakeFiles/appPBL_qmllint.dir
+/home/fr/Moc_project/UI_Workspace/UI_Workspace/build/Desktop_Qt_6_2_4_GCC_64bit-Debug/CMakeFiles/all_qmllint.dir
+/home/fr/Moc_project/UI_Workspace/UI_Workspace/build/Desktop_Qt_6_2_4_GCC_64bit-Debug/CMakeFiles/appPBL_tooling.dir
+/home/fr/Moc_project/UI_Workspace/UI_Workspace/build/Desktop_Qt_6_2_4_GCC_64bit-Debug/CMakeFiles/edit_cache.dir
+/home/fr/Moc_project/UI_Workspace/UI_Workspace/build/Desktop_Qt_6_2_4_GCC_64bit-Debug/CMakeFiles/rebuild_cache.dir
+/home/fr/Moc_project/UI_Workspace/UI_Workspace/build/Desktop_Qt_6_2_4_GCC_64bit-Debug/CMakeFiles/list_install_components.dir
+/home/fr/Moc_project/UI_Workspace/UI_Workspace/build/Desktop_Qt_6_2_4_GCC_64bit-Debug/CMakeFiles/install.dir
+/home/fr/Moc_project/UI_Workspace/UI_Workspace/build/Desktop_Qt_6_2_4_GCC_64bit-Debug/CMakeFiles/install/local.dir
+/home/fr/Moc_project/UI_Workspace/UI_Workspace/build/Desktop_Qt_6_2_4_GCC_64bit-Debug/CMakeFiles/install/strip.dir
+/home/fr/Moc_project/UI_Workspace/UI_Workspace/build/Desktop_Qt_6_2_4_GCC_64bit-Debug/CMakeFiles/appPBL_autogen_timestamp_deps.dir
+/home/fr/Moc_project/UI_Workspace/UI_Workspace/build/Desktop_Qt_6_2_4_GCC_64bit-Debug/CMakeFiles/appPBL_autogen.dir

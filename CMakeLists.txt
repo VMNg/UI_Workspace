@@ -24,6 +24,7 @@ qt_add_qml_module(appPBL
     QML_FILES Climate/src/Climate.qml Dashboard/src/Dashboard.qml Media/src/Media.qml Media/src/ControlMedia.qml
     QML_FILES CustomTabButton.qml
     RESOURCES Media/images.qrc
+    SOURCES Media/src/listmodelcontroller.h Media/src/listmodelcontroller.cpp
     # SOURCES Media/enginemedia.h Media/enginemedia.cpp
 )
 
