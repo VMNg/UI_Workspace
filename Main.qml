@@ -1,8 +1,5 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
-import "./Climate"
-import "./Dashboard"
-import "./Media"
 
 ApplicationWindow {
     width: 1080

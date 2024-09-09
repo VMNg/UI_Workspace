@@ -1,0 +1,10 @@
+formatVersion: 1
+formatType: am-application
+---
+id: climate
+name: Climate
+icon: icon.png
+code: src/Climate.qml
+runtime: 'qml'
+name:
+  en: 'Climate'

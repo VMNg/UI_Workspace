@@ -1,0 +1,10 @@
+formatVersion: 1
+formatType: am-application
+---
+id: dasboard
+name: Dashboard
+icon: icon.png
+code: src/Dashboard.qml
+runtime: 'qml'
+name:
+  en: 'Dashboard'

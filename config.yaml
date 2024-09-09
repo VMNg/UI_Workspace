@@ -2,24 +2,22 @@ formatVersion: 1
 formatType: am-configuration
 ---
 applications:
-  - id: dashboard
-    name: Dashboard
-    icon: apps/dashboard/icon.png
-    code: apps/dashboard/Dashboard.qml
+  builtinAppsManifestDir: "apps"
 
-  - id: climate
-    name: Climate Control
-    icon: apps/climate/icon.png
-    code: apps/climate/Climate.qml
+logging:
+  rules:
+    - "*=false"
+    - "qt.*=false"
+    - "am.*=false"
+    - "qml*=true"
+    - "*.warning=true"
+    - "*.critical=true"
 
-  - id: media
-    name: Media Player
-    icon: apps/media/icon.png
-    code: apps/media/Media.qml
+ui:
+  fullscreen: no
+  mainQml: "SysUI/main.qml"
+  
+flags:
+  noSecurity: yes
+  noUiWatchdog: yes
 
-categories:
-  - name: Main
-    applications:
-      - dashboard
-      - climate
-      - media

@@ -1,0 +1,10 @@
+formatVersion: 1
+formatType: am-application
+---
+id: media
+name: Media
+icon: icon.png
+code: src/Media.qml
+runtime: 'qml'
+name:
+  en: 'Media'
