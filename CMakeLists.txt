@@ -30,7 +30,8 @@ qt_add_qml_module(appPBL
 )
 
 target_link_libraries(appPBL
-    PRIVATE Qt6::Quick
+    PRIVATE
+        Qt6::Quick
         Qt6::Core
         Qt6::Multimedia
 )
