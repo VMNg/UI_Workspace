@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Music/24H.mp3</file>
+        <file>Music/Dung_Lam_Trai_Tim_Anh_Dau.mp3</file>
+        <file>Music/Dung_quen_ten_anh_DatGMusic.mp4</file>
+        <file>Music/Exit_sign.mp3</file>
+        <file>Music/Khong_the_say_HieuT2.mp3</file>
+        <file>Music/May_lang_thang.mp4</file>
+        <file>Music/Minh_anh_thoi.mp4</file>
+        <file>Music/Nhung_loi_hua_bo_wen.mp4</file>
+        <file>Music/Thu_toi_Dat_G.mp3</file>
+    </qresource>
+</RCC>
