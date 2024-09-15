@@ -13,8 +13,8 @@ int main(int argc, char *argv[])
     SongListController pListSong;
     VideoListController pListVideo;
     const QUrl url(u"qrc:/PBL/Main.qml"_qs);
-    QDir dirSong("/home/fr/Documents/workspace/UI_Workspace/UI_Workspace/Music");
-    QDir dirVideo("/home/fr/Documents/workspace/UI_Workspace/UI_Workspace/Media");
+    QDir dirSong("/home/fr/Moc_project/UI_Workspace/UI_Workspace/Media/Music");
+    QDir dirVideo("/home/fr/Moc_project/UI_Workspace/UI_Workspace/Media/Video");
     QStringList listSongs=dirSong.entryList(QStringList()<<"*.mp3"<<"*.MP3",QDir::Files);
     QStringList listVideos=dirVideo.entryList(QStringList()<<"*.mp4"<<"*.MP4",QDir::Files);
     foreach (QString filename, listSongs) {
