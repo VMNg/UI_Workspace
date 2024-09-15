@@ -2,7 +2,12 @@ import QtQuick 2.15
 import PlayerControl 1.0
 
 Item {
+    property bool status_media: false
+    property bool status_suffle: false
+    property bool current_list: false
+
     id: controlMedia
+
     width:720
     height:120
 
@@ -20,57 +25,69 @@ Item {
             spacing: 80
 
             Image {
-                source: "qrc:/iconControlMedia/suffle.png"
+                id: suffle
+                source: status_suffle ? "qrc:/iconControlMedia/suffle_active.png" : "qrc:/iconControlMedia/suffle.png"
                 width: 64
                 height: 64
                 MouseArea{
                     anchors.fill: parent
                     onClicked: {
-                        console.log("Click Button!!");
+                        status_suffle = !status_suffle;
+                        playerControl.setShuffle(status_suffle)
                     }
                 }
             }
             Image {
+                id: previous
                 source: "qrc:/iconControlMedia/rewind-button.png"
                 width: 64
                 height: 64
                 MouseArea{
                     anchors.fill: parent
                     onClicked: {
-                        console.log("Click Button!!");
+                        playerControl.previous();
                     }
                 }
             }
             Image {
-                source: "qrc:/iconControlMedia/play-button-arrowhead.png"
+                id: play_stop
+                source: status_media ? "qrc:/iconControlMedia/stop-button.png" : "qrc:/iconControlMedia/play-button-arrowhead.png"
+
                 width: 64
                 height: 64
                 MouseArea{
                     anchors.fill: parent
                     onClicked: {
-                        playerControl.playClicked();
+                        if(status_media){
+                            playerControl.pauseClicked();
+                        }else {
+                            playerControl.playClicked();
+                        }
+                        status_media = !status_media;
                     }
                 }
             }
             Image {
+                id: next
                 source: "qrc:/iconControlMedia/forward-button.png"
                 width: 64
                 height: 64
                 MouseArea{
                     anchors.fill: parent
                     onClicked: {
-                        console.log("Click Button!!");
+                        playerControl.next();
                     }
                 }
             }
             Image {
-                source: "qrc:/iconControlMedia/play-list.png"
+                id: modeMedia
+                source: current_list ? "qrc:/iconControlMedia/playlist-video.png" : "qrc:/iconControlMedia/playlist-song.png"
                 width: 64
                 height: 64
                 MouseArea{
                     anchors.fill: parent
                     onClicked: {
-                        console.log("Click Button!!");
+                        current_list = !current_list;
                     }
                 }
             }
