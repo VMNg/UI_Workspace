@@ -1,0 +1,13 @@
+formatVersion: 1
+formatType: am-application
+---
+id:      'media'
+name:
+  en: 'Native media'
+icon:    'icon.png'
+code:    'media'
+runtime: 'native'
+runtimeParameters:
+  environmentVariables:
+    QT_WAYLAND_DISABLE_WINDOWDECORATION: "1"
+supportsApplicationInterface: yes

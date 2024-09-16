@@ -1,0 +1,13 @@
+formatVersion: 1
+formatType: am-application
+---
+id:      'dashboard'
+name:
+  en: 'Native dashboard'
+icon:    'icon.png'
+code:    'dashboard'
+runtime: 'native'
+runtimeParameters:
+  environmentVariables:
+    QT_WAYLAND_DISABLE_WINDOWDECORATION: "1"
+supportsApplicationInterface: yes
