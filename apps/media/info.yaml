@@ -3,7 +3,7 @@ formatType: am-application
 ---
 id:      'media'
 name:
-  en: 'Native media'
+  en: 'Media'
 icon:    'icon.png'
 code:    'media'
 runtime: 'native'

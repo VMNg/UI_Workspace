@@ -1,5 +1,3 @@
-
-
 import QtQuick 2.11
 import QtQuick.Window 2.11
 import QtApplicationManager.SystemUI 2.0
@@ -23,29 +21,32 @@ Window {
             right: parent.right
             left: parent.left
         }
+         // Add spacing between buttons
+
         Repeater {
-            model: ApplicationManager
+            model: ApplicationManager  // Keep the model
 
-            Image {
-                source: icon
-                opacity: isRunning ? 0.3 : 1.0
-
-                Rectangle {
-                    x: 96; y: 38
-                    width: appid.width; height: appid.height
-                    color: "whitesmoke"
-                    visible: imouse.containsMouse
-                    Text {
-                        id: appid
-                        text: application.name("en")
-                    }
+            delegate: Rectangle {
+                width: 1280/3
+                height: 100
+                color: "#1E3A5F"  // Change to match your design
+                Text {
+                    anchors.centerIn: parent
+                    text: application.name("en")  
+                    font.bold: true
+                    color: "grey"
+                    font.pixelSize: 19
                 }
-
                 MouseArea {
-                    id: imouse
                     anchors.fill: parent
-                    hoverEnabled: true
-                    onClicked: isRunning ? application.stop() : application.start();
+                    onClicked: {
+                        // Logic to switch to the corresponding application
+                        if (isRunning) {
+                            application.stop();
+                        } else {
+                            application.start();
+                        }
+                    }
                 }
             }
         }

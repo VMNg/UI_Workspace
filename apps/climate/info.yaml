@@ -3,7 +3,7 @@ formatType: am-application
 ---
 id:      'climate'
 name:
-  en: 'Native climate'
+  en: 'Climate'
 icon:    'icon.png'
 code:    'climate'
 runtime: 'native'

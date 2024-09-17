@@ -3,7 +3,7 @@ formatType: am-application
 ---
 id:      'dashboard'
 name:
-  en: 'Native dashboard'
+  en: 'Dashboard'
 icon:    'icon.png'
 code:    'dashboard'
 runtime: 'native'
