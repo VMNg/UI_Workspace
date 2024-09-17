@@ -21,15 +21,14 @@ Window {
             right: parent.right
             left: parent.left
         }
-         // Add spacing between buttons
 
         Repeater {
-            model: ApplicationManager  // Keep the model
+            model: ApplicationManager 
 
             delegate: Rectangle {
                 width: 1280/3
                 height: 100
-                color: "#1E3A5F"  // Change to match your design
+                color: "#1E3A5F"  
                 Text {
                     anchors.centerIn: parent
                     text: application.name("en")  
@@ -40,7 +39,6 @@ Window {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        // Logic to switch to the corresponding application
                         if (isRunning) {
                             application.stop();
                         } else {
