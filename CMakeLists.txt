@@ -22,9 +22,9 @@ qt_add_qml_module(appPBL
     VERSION 1.0
     QML_FILES Main.qml
     QML_FILES Climate/src/Climate.qml Dashboard/src/Dashboard.qml Media/src/Media.qml Media/src/ControlMedia.qml
-    QML_FILES CustomTabButton.qml
+    QML_FILES CustomTabButton.qml Media/src/ListMedia.qml Media/src/SliderMedia.qml Media/src/ListButtonMedia.qml
     SOURCES Media/src/SongListController.h Media/src/SongListController.cpp
-    SOURCES Media/enginemedia.h Media/enginemedia.cpp
+    SOURCES Media/EngineMedia.h Media/EngineMedia.cpp
     RESOURCES Media/images.qrc
     RESOURCES Media/music.qrc
     SOURCES Media/src/VideoListController.h Media/src/VideoListController.cpp

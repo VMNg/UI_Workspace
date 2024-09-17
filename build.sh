@@ -1,5 +1,7 @@
 #!/bin/bash
 
+rm -rf build
+
 if [ ! -d build/ ]; then
   mkdir build
 fi
