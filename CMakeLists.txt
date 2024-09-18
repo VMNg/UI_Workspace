@@ -25,6 +25,11 @@ qt_add_qml_module(appPBL
     QML_FILES CustomTabButton.qml
     RESOURCES Media/images.qrc
     SOURCES Media/src/listmodelcontroller.h Media/src/listmodelcontroller.cpp
+    QML_FILES Climate/src/Fan.qml
+    QML_FILES Climate/src/Functions1.qml
+    QML_FILES Climate/src/Functions2.qml
+    QML_FILES Climate/src/Temperature_front.qml
+    QML_FILES Climate/src/Temperature_rear.qml
     # SOURCES Media/enginemedia.h Media/enginemedia.cpp
 )
 
