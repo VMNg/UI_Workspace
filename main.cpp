@@ -1,22 +1,24 @@
-#include <QGuiApplication>
+#include <QApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include "Media/EngineMedia.h"
 #include "Media/src/SongListController.h"
 #include "Media/src/VideoListController.h"
+#include "Media/src/videoplayer.h"
 
 int main(int argc, char *argv[])
 {
-    QGuiApplication app(argc, argv);
+    QApplication app(argc, argv);
 
     EngineMedia m_media;
+    SongListController pListSong;
+    VideoListController pListVideo;
 
     QQmlApplicationEngine engine;
 
     //Load music, media to model
-    SongListController pListSong;
-    VideoListController pListVideo;
     const QUrl url(u"qrc:/PBL/Main.qml"_qs);
+
     QDir dirSong("/home/fr/Documents/workspace/UI_Workspace/UI_Workspace/Media/Music");
     QDir dirVideo("/home/fr/Documents/workspace/UI_Workspace/UI_Workspace/Media/Video");
     QStringList listSongs=dirSong.entryList(QStringList()<<"*.mp3"<<"*.MP3",QDir::Files);
@@ -38,6 +40,7 @@ int main(int argc, char *argv[])
     context->setContextProperty("playerControl",&m_media);
     context->setContextProperty("playListSong",&pListSong);
     context->setContextProperty("playListVideo",&pListVideo);
+    qmlRegisterType<VideoPlayer>("Videoplayer", 1, 0, "VideoPlayer");
 
     engine.load(url);
     return app.exec();

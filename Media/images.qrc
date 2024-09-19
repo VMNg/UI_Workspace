@@ -8,5 +8,10 @@
         <file>iconControlMedia/suffle_active.png</file>
         <file>iconControlMedia/playlist-song.png</file>
         <file>iconControlMedia/playlist-video.png</file>
+        <file>iconControlMedia/speedMedia.png</file>
+        <file>iconControlMedia/volume_high.png</file>
+        <file>iconControlMedia/volume_medium.png</file>
+        <file>iconControlMedia/volume_mute.png</file>
+        <file>iconControlMedia/playingMusic.png</file>
     </qresource>
 </RCC>

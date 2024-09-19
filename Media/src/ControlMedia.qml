@@ -9,7 +9,7 @@ Item {
     id: controlMedia
 
     width:720
-    height:150
+    height:200
 
     Rectangle {
         id: containerControl
@@ -17,8 +17,9 @@ Item {
         color: "grey"
 
         SliderMedia{
+            id: mySlider
             width_slider: parent.width
-            height_slider: parent.height
+            height_slider: 40
             anchors{
                 top: parent.top
                 topMargin: 15
@@ -28,10 +29,29 @@ Item {
         }
 
         ListButtonMedia{
+            id: listButton
             anchors{
-                bottom: parent.bottom
-                bottomMargin: 30
+                top: mySlider.bottom
                 horizontalCenter: parent.horizontalCenter
+            }
+        }
+
+        SpeedMusic{
+            id: speedMusic
+            anchors{
+                top: listButton.bottom
+                topMargin: 10
+                left: listButton.left
+                leftMargin: 20
+            }
+        }
+
+        VolumeMusic{
+            id: volume
+            anchors{
+                left: speedMusic.right
+                leftMargin: 150
+                verticalCenter: speedMusic.verticalCenter
             }
         }
     }

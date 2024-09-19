@@ -66,6 +66,15 @@ Row{
         MouseArea{
             anchors.fill: parent
             onClicked: {
+                if(current_list === false){
+                    playListSong.setVisibleUI(false);
+                    playListVideo.setVisibleUI(true);
+                    playerControl.setTypeMedia(false);
+                }else {
+                    playListSong.setVisibleUI(true);
+                    playListVideo.setVisibleUI(false);
+                    playerControl.setTypeMedia(true);
+                }
                 current_list = !current_list;
             }
         }

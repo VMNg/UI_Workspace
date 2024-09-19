@@ -29,3 +29,21 @@ QHash<int,QByteArray>VideoListController::roleNames()const{
     roles[nameVideo]="nameVideo";
     return roles;
 }
+
+bool VideoListController::visible() const
+{
+    return m_visible;
+}
+
+void VideoListController::setVisible(bool newVisible)
+{
+    if (m_visible == newVisible)
+        return;
+    m_visible = newVisible;
+    emit visibleChanged();
+}
+
+void VideoListController::setVisibleUI(bool status)
+{
+    setVisible(status);
+}

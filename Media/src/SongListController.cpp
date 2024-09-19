@@ -29,3 +29,21 @@ QHash<int,QByteArray>SongListController::roleNames()const{
     roles[nameSong]="nameSong";
     return roles;
 }
+
+bool SongListController::visible() const
+{
+    return m_visible;
+}
+
+void SongListController::setVisible(bool newVisible)
+{
+    if (m_visible == newVisible)
+        return;
+    m_visible = newVisible;
+    emit visibleChanged();
+}
+
+void SongListController::setVisibleUI(bool status)
+{
+    setVisible(status);
+}

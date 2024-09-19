@@ -5,8 +5,11 @@ EngineMedia::EngineMedia(QObject *parent) : QObject(parent) {
 
     //Get list songs
     QDir dirSong("/home/fr/Documents/workspace/UI_Workspace/UI_Workspace/Media/Music");
+    QDir dirVideo("/home/fr/Documents/workspace/UI_Workspace/UI_Workspace/Media/Video");
     QStringList listSongs = dirSong.entryList(QStringList()<<"*.mp3"<<"*.MP3",QDir::Files);
-    EngineMedia::addSong(listSongs);
+    QStringList listVideos = dirVideo.entryList(QStringList()<<"*.mp4"<<"*.MP4",QDir::Files);
+    EngineMedia::addSong(listSongs, listMedia, urlSong);
+    EngineMedia::addSong(listVideos, listVideo, urlVideo);
     EngineMedia::initialize();
     //Debug error
     QObject::connect(M_Player, &QMediaPlayer::errorOccurred, [](QMediaPlayer::Error error){
@@ -16,8 +19,6 @@ EngineMedia::EngineMedia(QObject *parent) : QObject(parent) {
                      [](QMediaPlayer::MediaStatus status){
                          qDebug() << "Media Player Status:" << status;
                      });
-    QObject::connect(M_Player, &QMediaPlayer::mediaStatusChanged,
-                     this,  &EngineMedia::handle_mediaStatusChanged);
 }
 
 EngineMedia::~EngineMedia()
@@ -51,8 +52,15 @@ uint EngineMedia::shuffle_list(uint begin, uint end)
 
 void EngineMedia::play_media(uint index, QList<QString> listModel)
 {
-    M_Player->setSource(QUrl::fromLocalFile((listModel[index])));
-    M_Player->play();
+    if(typeSong == true){
+        M_Player->setSource(QUrl::fromLocalFile((listModel[index])));
+        M_Player->play();
+        setRunning(true);
+    } else{
+        qWarning() << listModel[index];
+        videoPlayer->loadVideo((listModel[index]));
+        // setRunning(false);
+    }
 }
 
 void EngineMedia::handle_mediaStatusChanged(QMediaPlayer::MediaStatus status)
@@ -69,31 +77,51 @@ void EngineMedia::handle_mediaStatusChanged(QMediaPlayer::MediaStatus status)
 void EngineMedia::on_pushButton_Play_clicked()
 {
     M_Player->play();
+    setRunning(true);
 }
 
 void EngineMedia::on_pushButton_Pause_clicked()
 {
     M_Player->pause();
+    setRunning(false);
 }
 
 void EngineMedia::on_pushButton_Next_clicked()
 {
-    if(currentIndex < listMedia.size() - 1){
-        currentIndex += 1U;
-    } else {
-        currentIndex = 0U;
+    if(typeSong == true){
+        if(currentIndex < listMedia.size() - 1){
+            currentIndex += 1U;
+        } else {
+            currentIndex = 0U;
+        }
+        play_media(currentIndex, listMedia);
+    } else{
+        if(currentIndex < listVideo.size() - 1){
+            currentIndex += 1U;
+        } else {
+            currentIndex = 0U;
+        }
+        play_media(currentIndex, listVideo);
     }
-    play_media(currentIndex, listMedia);
 }
 
 void EngineMedia::on_pushButton_Previous_clicked()
 {
-    if(currentIndex > 0){
-        currentIndex -= 1U;
-    } else {
-        currentIndex = listMedia.size() - 1;
+    if(typeSong == true){
+        if(currentIndex > 0){
+            currentIndex -= 1U;
+        } else {
+            currentIndex = listMedia.size() - 1;
+        }
+        play_media(currentIndex, listMedia);
+    } else{
+        if(currentIndex > 0){
+            currentIndex -= 1U;
+        } else {
+            currentIndex = listVideo.size() - 1;
+        }
+        play_media(currentIndex, listVideo);
     }
-    play_media(currentIndex, listMedia);
 }
 
 void EngineMedia::playClicked()
@@ -138,32 +166,43 @@ void EngineMedia::setShuffle(bool newShuffle)
 void EngineMedia::handle_suffleMedia()
 {
     uint random_idx;
-    do {
-        (random_idx = shuffle_list(0, (listMedia.size() - 1)));
-    } while(random_idx == currentIndex);
-    play_media(random_idx, listMedia);
+    if(typeSong == true){
+        do {
+            (random_idx = shuffle_list(0, (listMedia.size() - 1)));
+        } while(random_idx == currentIndex);
+        play_media(random_idx, listMedia);
+    } else{
+        do {
+            (random_idx = shuffle_list(0, (listVideo.size() - 1)));
+        } while(random_idx == currentIndex);
+        play_media(random_idx, listVideo);
+    }
 }
 
-void EngineMedia::addSong(const QStringList& listSongs)
+void EngineMedia::addSong(const QStringList& listSongs, QList<QString>& list, QString urlPath)
 {
     foreach (QString filename, listSongs) {
-        listMedia.append(urlSong + filename);
+        list.append(urlPath + filename);
     }
 }
 
 void EngineMedia::initialize()
 {
+    qWarning() << "step 2";
     M_Player = new QMediaPlayer(this);
+    qWarning() << "pointer:" << M_Player;
     audioOutput = new QAudioOutput(this);
+    videoPlayer = new VideoPlayer(M_Player);
     M_Player->setAudioOutput(audioOutput);
     M_Player->setSource(QUrl::fromLocalFile((listMedia[currentIndex])));
-    audioOutput->setVolume(1);
+    audioOutput->setVolume(0.5);
 
     //Connect slot,signal
     connect(this, &EngineMedia::play, this, &EngineMedia::on_pushButton_Play_clicked);
     connect(this, &EngineMedia::pause, this, &EngineMedia::on_pushButton_Pause_clicked);
     connect(this, &EngineMedia::next, this, &EngineMedia::on_pushButton_Next_clicked);
     connect(this, &EngineMedia::previous, this, &EngineMedia::on_pushButton_Previous_clicked);
+    connect(M_Player, &QMediaPlayer::mediaStatusChanged, this,  &EngineMedia::handle_mediaStatusChanged);
     connect(M_Player, &QMediaPlayer::positionChanged, this, [&](qint64 position){
         position_slider = position;
         QString current_position = convertTime(position);
@@ -174,14 +213,23 @@ void EngineMedia::initialize()
         setDuration_Media(convertTime(dur));
     });
     // connect(this, &EngineMedia::shuffer, this, &EngineMedia::on_pushButton_Shuffer_clicked);
+    qWarning() << "step 3";
 }
 
 void EngineMedia::playAtIndex(uint index)
 {
-    if((index < 0) ||  (index > (listMedia.size() -1))){
-        return;
-    } else{
-        play_media(index, listMedia);
+    if(typeSong == true){
+        if((index < 0) ||  (index > (listMedia.size() -1))){
+            return;
+        } else{
+            play_media(index, listMedia);
+        }
+    }else{
+        if((index < 0) ||  (index > (listVideo.size() -1))){
+            return;
+        } else{
+            play_media(index, listVideo);
+        }
     }
 }
 
@@ -200,13 +248,38 @@ void EngineMedia::setPosition(qreal position)
     M_Player->setPosition(position);
 }
 
+void EngineMedia::setVolume(float volume)
+{
+    audioOutput->setVolume(volume);
+}
+
+void EngineMedia::setPlayBackMedia(qreal rate)
+{
+    M_Player->setPlaybackRate(rate);
+}
+
+void EngineMedia::setTypeMedia(bool type)
+{
+    typeSong = type;
+}
+
+QString EngineMedia::currentPosition() const
+{
+    return m_currentPosition;
+}
+
+QString EngineMedia::duration_Media() const
+{
+    return m_duration_Media;
+}
+
 QString EngineMedia::convertTime(qint64 position)
 {
     long seconds = position / 1000;
     int minutes = seconds / 60;
     int remainingSeconds = seconds % 60;
     std::string tmp_time = std::string((minutes < 10 ? "0" : "") + std::to_string(minutes) + ":" +
-                           (remainingSeconds < 10 ? "0" : "") + std::to_string(remainingSeconds));
+                                       (remainingSeconds < 10 ? "0" : "") + std::to_string(remainingSeconds));
     QString time_had_convert = QString::fromStdString(tmp_time);
     return time_had_convert;
 }
@@ -221,16 +294,6 @@ void EngineMedia::setCurrentPosition(const QString &newCurrentPosition)
 }
 
 
-QString EngineMedia::currentPosition() const
-{
-    return m_currentPosition;
-}
-
-QString EngineMedia::duration_Media() const
-{
-    return m_duration_Media;
-}
-
 void EngineMedia::setDuration_Media(const QString &newDuration_Media)
 {
     if (m_duration_Media == newDuration_Media)
@@ -238,4 +301,17 @@ void EngineMedia::setDuration_Media(const QString &newDuration_Media)
     m_duration_Media = newDuration_Media;
     emit updateDuration();
     emit duration_MediaChanged();
+}
+
+bool EngineMedia::running() const
+{
+    return m_running;
+}
+
+void EngineMedia::setRunning(bool newRunning)
+{
+    if (m_running == newRunning)
+        return;
+    m_running = newRunning;
+    emit runningChanged();
 }

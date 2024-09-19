@@ -5,15 +5,22 @@
 #include <QtMultimedia>
 #include <QDebug>
 #include <QFile>
-#include <random>
 #include <QDir>
 #include <QStringList>
 #include <QList>
 #include <QString>
+#include <QVideoWidget>
+#include <QVideoSink>
+#include <QPainter>
+#include <QVideoFrame>
+#include <QQuickPaintedItem>
 
+#include <random>
 #include <iostream>
 #include <iomanip>
 #include <sstream>
+
+#include "Media/src/videoplayer.h"
 
 using namespace std;
 
@@ -24,6 +31,7 @@ class EngineMedia : public QObject
     Q_PROPERTY(bool shuffle READ shuffle WRITE setShuffle NOTIFY shuffleChanged FINAL)
     Q_PROPERTY(QString currentPosition READ currentPosition WRITE setCurrentPosition NOTIFY currentPositionChanged FINAL)
     Q_PROPERTY(QString duration_Media READ duration_Media WRITE setDuration_Media NOTIFY duration_MediaChanged FINAL)
+    Q_PROPERTY(bool running READ running WRITE setRunning NOTIFY runningChanged FINAL)
 public:
     explicit EngineMedia(QObject *parent = nullptr);
     ~EngineMedia();
@@ -31,14 +39,15 @@ public:
     void play_media(uint index, QList<QString> listModel);
     bool shuffle() const;
     void handle_suffleMedia();
-    void addSong(const QStringList& listSongs);
+    void addSong(const QStringList& listSongs, QList<QString>& list, QString urlPath);
     void initialize();
     void setCurrentPosition(const QString &newCurrentPosition);
     QString currentPosition() const;
     QString convertTime(qint64 position);
-
     QString duration_Media() const;
     void setDuration_Media(const QString &newDuration_Media);
+    bool running() const;
+    void setRunning(bool newRunning);
 
 signals:
     void play();
@@ -51,6 +60,7 @@ signals:
     void duration_MediaChanged();
     void updateSlider();
     void updateDuration();
+    void runningChanged();
 
 private slots:
     void on_pushButton_Play_clicked();
@@ -67,21 +77,29 @@ public slots:
     void shufferClicked();
     void handle_mediaStatusChanged(QMediaPlayer::MediaStatus status);
     void playAtIndex(uint index);
+    void setPosition(qreal position);
+    void setVolume(float volume);
+    void setPlayBackMedia(qreal rate);
+    void setTypeMedia(bool type);
     uint64_t getDurationForSlider();
     uint64_t getPositionForSlider();
-    void setPosition(qreal position);
 
 private:
     QMediaPlayer *M_Player;
     QAudioOutput *audioOutput;
+    VideoPlayer *videoPlayer;
     QList<QString> listMedia;
+    QList<QString> listVideo;
     uint currentIndex{0U};
     const QString urlSong = "/home/fr/Documents/workspace/UI_Workspace/UI_Workspace/Media/Music/";
+    const QString urlVideo = "/home/fr/Documents/workspace/UI_Workspace/UI_Workspace/Media/Video/";
     bool m_shuffle;
     QString m_currentPosition = "NA::NA";
     QString m_duration_Media = "NA::NA";
     uint64_t duration_slider = 0;
     uint64_t position_slider = 0;
+    bool m_running = false;
+    bool typeSong = true;
 };
 
 #endif // ENGINEMEDIA_H
