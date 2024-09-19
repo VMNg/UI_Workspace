@@ -4,7 +4,7 @@
 #include "Media/EngineMedia.h"
 #include "Media/src/SongListController.h"
 #include "Media/src/VideoListController.h"
-#include "Media/src/videoplayer.h"
+#include "Media/src/VideoPlayer.h"
 
 int main(int argc, char *argv[])
 {

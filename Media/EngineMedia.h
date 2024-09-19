@@ -20,7 +20,7 @@
 #include <iomanip>
 #include <sstream>
 
-#include "Media/src/videoplayer.h"
+#include "Media/src/VideoPlayer.h"
 
 using namespace std;
 

@@ -42,8 +42,8 @@ protected:
 private slots:
     void onFrameChanged(const QVideoFrame &frame) {
         qWarning() << "updateFrame";
-        currentFrame = frame.toImage();  // Lấy hình ảnh từ frame
-        update();  // Yêu cầu repaint
+        currentFrame = frame.toImage();
+        update();
     }
 
 private:

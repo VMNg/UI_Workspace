@@ -32,7 +32,7 @@ qt_add_qml_module(appPBL
     QML_FILES Media/src/SpeedMusic.qml
     QML_FILES Media/src/VolumeMusic.qml
     QML_FILES Media/src/ScreenWithMusic.qml
-    SOURCES Media/src/videoplayer.h
+    SOURCES Media/src/VideoPlayer.h Media/src/VideoPlayer.cpp
 )
 
 target_link_libraries(appPBL
