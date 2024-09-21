@@ -40,7 +40,9 @@ int main(int argc, char *argv[])
     context->setContextProperty("playerControl",&m_media);
     context->setContextProperty("playListSong",&pListSong);
     context->setContextProperty("playListVideo",&pListVideo);
-    qmlRegisterType<VideoPlayer>("Videoplayer", 1, 0, "VideoPlayer");
+    // qmlRegisterSingletonInstance<VideoPlayer>("Videoplayer", 1, 0, "VideoPlayer", VideoPlayer::instance());
+    qmlRegisterType<EngineMedia>("Videoplayer", 1, 0, "VideoPlayer");
+
 
     engine.load(url);
     return app.exec();

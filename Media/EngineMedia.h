@@ -20,11 +20,11 @@
 #include <iomanip>
 #include <sstream>
 
-#include "Media/src/VideoPlayer.h"
+// #include "Media/src/VideoPlayer.h"
 
 using namespace std;
 
-class EngineMedia : public QObject
+class EngineMedia : public QQuickPaintedItem
 {
     Q_OBJECT
     Q_DISABLE_COPY(EngineMedia)
@@ -33,7 +33,7 @@ class EngineMedia : public QObject
     Q_PROPERTY(QString duration_Media READ duration_Media WRITE setDuration_Media NOTIFY duration_MediaChanged FINAL)
     Q_PROPERTY(bool running READ running WRITE setRunning NOTIFY runningChanged FINAL)
 public:
-    explicit EngineMedia(QObject *parent = nullptr);
+    explicit EngineMedia(QQuickPaintedItem *parent = nullptr);
     ~EngineMedia();
     uint shuffle_list(uint begin, uint end);
     void play_media(uint index, QList<QString> listModel);
@@ -83,11 +83,25 @@ public slots:
     void setTypeMedia(bool type);
     uint64_t getDurationForSlider();
     uint64_t getPositionForSlider();
+protected:
+    void paint(QPainter *painter) override {
+        if (!currentFrame.isNull()) {
+            painter->drawImage(boundingRect(), currentFrame);
+        }
+    }
+private slots:
+    void onFrameChanged(const QVideoFrame &frame) {
+        qWarning() << "updateFrame";
+        currentFrame = frame.toImage();
+        update();
+    }
 
 private:
+    QImage currentFrame;
+    QVideoSink *videoSink;
     QMediaPlayer *M_Player;
     QAudioOutput *audioOutput;
-    VideoPlayer *videoPlayer;
+    // VideoPlayer *videoPlayer;
     QList<QString> listMedia;
     QList<QString> listVideo;
     uint currentIndex{0U};

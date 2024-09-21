@@ -51,7 +51,7 @@ Item {
 
             // width: 720
             // height: 470
-            VideoPlayer{
+            VideoPlayer {
                 id: videoPlayer
                 visible: true
                 width: 720

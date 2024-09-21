@@ -1,8 +1,7 @@
 #include "EngineMedia.h"
 
-EngineMedia::EngineMedia(QObject *parent) : QObject(parent) {
+EngineMedia::EngineMedia(QQuickPaintedItem *parent) : QQuickPaintedItem(parent) {
     qInfo("Initialize media");
-
     //Get list songs
     QDir dirSong("/home/fr/Documents/workspace/UI_Workspace/UI_Workspace/Media/Music");
     QDir dirVideo("/home/fr/Documents/workspace/UI_Workspace/UI_Workspace/Media/Video");
@@ -57,9 +56,11 @@ void EngineMedia::play_media(uint index, QList<QString> listModel)
         M_Player->play();
         setRunning(true);
     } else{
-        qWarning() << listModel[index];
-        videoPlayer->loadVideo((listModel[index]));
-        // setRunning(false);
+        //UPDATE-PROCESS_VIDEO-HEREEEE
+        // videoPlayer->loadVideo((listModel[index]));
+        M_Player->setSource(QUrl::fromLocalFile((listModel[index])));
+        M_Player->play();
+        setRunning(false);
     }
 }
 
@@ -187,17 +188,17 @@ void EngineMedia::addSong(const QStringList& listSongs, QList<QString>& list, QS
 }
 
 void EngineMedia::initialize()
-{
-    qWarning() << "step 2";
+{    
     M_Player = new QMediaPlayer(this);
-    qWarning() << "pointer:" << M_Player;
     audioOutput = new QAudioOutput(this);
-    videoPlayer = new VideoPlayer(M_Player);
+    videoSink = new QVideoSink();
+    M_Player->setVideoOutput(videoSink);
     M_Player->setAudioOutput(audioOutput);
     M_Player->setSource(QUrl::fromLocalFile((listMedia[currentIndex])));
     audioOutput->setVolume(0.5);
 
     //Connect slot,signal
+    connect(videoSink, &QVideoSink::videoFrameChanged, this, &EngineMedia::onFrameChanged);
     connect(this, &EngineMedia::play, this, &EngineMedia::on_pushButton_Play_clicked);
     connect(this, &EngineMedia::pause, this, &EngineMedia::on_pushButton_Pause_clicked);
     connect(this, &EngineMedia::next, this, &EngineMedia::on_pushButton_Next_clicked);
@@ -213,7 +214,6 @@ void EngineMedia::initialize()
         setDuration_Media(convertTime(dur));
     });
     // connect(this, &EngineMedia::shuffer, this, &EngineMedia::on_pushButton_Shuffer_clicked);
-    qWarning() << "step 3";
 }
 
 void EngineMedia::playAtIndex(uint index)
