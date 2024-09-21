@@ -1,3 +1,3 @@
-#!/bin/bash
+#/bin/bash
 
-./build/appPBL
+./build/mock-dev2.sh
