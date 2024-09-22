@@ -1,10 +1,13 @@
 import QtQuick 2.15
 
 Item {
+    width: 720
+    height: 470
+    visible: playerControl.running ? true : false
     Rectangle{
         id: background
-        height: 470
         width: 720
+        height: 470
         color: "#1e1e1e"
 
         Image{

@@ -30,19 +30,18 @@ Row{
     }
     Image {
         id: play_stop
-        source: status_media ? "qrc:/iconControlMedia/stop-button.png" : "qrc:/iconControlMedia/play-button-arrowhead.png"
+        source: playerControl.start ? "qrc:/iconControlMedia/stop-button.png" : "qrc:/iconControlMedia/play-button-arrowhead.png"
 
         width: 64
         height: 64
         MouseArea{
             anchors.fill: parent
             onClicked: {
-                if(status_media){
+                if(playerControl.start){
                     playerControl.pauseClicked();
                 }else {
                     playerControl.playClicked();
                 }
-                status_media = !status_media;
             }
         }
     }

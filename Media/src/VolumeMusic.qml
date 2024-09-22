@@ -6,6 +6,7 @@ Item {
     width: 300
     height: 64
     Row{
+        spacing: 10
         width: parent.width
         height: parent.height
         Image {
@@ -25,8 +26,6 @@ Item {
         Slider{
             id: mySlider
             anchors{
-                left: speedMedia.right
-                leftMargin: 10
                 verticalCenter: speedMedia.verticalCenter
             }
 

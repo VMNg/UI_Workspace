@@ -1,14 +1,15 @@
-#include <QApplication>
+#include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
+#include <QDebug>
 #include "Media/EngineMedia.h"
 #include "Media/src/SongListController.h"
 #include "Media/src/VideoListController.h"
-#include "Media/src/VideoPlayer.h"
+#include "Media/src/RenderVideo.h"
 
 int main(int argc, char *argv[])
 {
-    QApplication app(argc, argv);
+    QGuiApplication app(argc, argv);
 
     EngineMedia m_media;
     SongListController pListSong;
@@ -40,8 +41,7 @@ int main(int argc, char *argv[])
     context->setContextProperty("playerControl",&m_media);
     context->setContextProperty("playListSong",&pListSong);
     context->setContextProperty("playListVideo",&pListVideo);
-    // qmlRegisterSingletonInstance<VideoPlayer>("Videoplayer", 1, 0, "VideoPlayer", VideoPlayer::instance());
-    qmlRegisterType<EngineMedia>("Videoplayer", 1, 0, "VideoPlayer");
+    qmlRegisterType<RenderVideo>("RenderVideo", 1, 0, "VideoRender");
 
 
     engine.load(url);

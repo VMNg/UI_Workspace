@@ -9,7 +9,6 @@
 #include <QStringList>
 #include <QList>
 #include <QString>
-#include <QVideoWidget>
 #include <QVideoSink>
 #include <QPainter>
 #include <QVideoFrame>
@@ -20,11 +19,9 @@
 #include <iomanip>
 #include <sstream>
 
-// #include "Media/src/VideoPlayer.h"
-
 using namespace std;
 
-class EngineMedia : public QQuickPaintedItem
+class EngineMedia : public QObject
 {
     Q_OBJECT
     Q_DISABLE_COPY(EngineMedia)
@@ -32,8 +29,9 @@ class EngineMedia : public QQuickPaintedItem
     Q_PROPERTY(QString currentPosition READ currentPosition WRITE setCurrentPosition NOTIFY currentPositionChanged FINAL)
     Q_PROPERTY(QString duration_Media READ duration_Media WRITE setDuration_Media NOTIFY duration_MediaChanged FINAL)
     Q_PROPERTY(bool running READ running WRITE setRunning NOTIFY runningChanged FINAL)
+    Q_PROPERTY(bool start READ start WRITE setstart NOTIFY startChanged FINAL)
 public:
-    explicit EngineMedia(QQuickPaintedItem *parent = nullptr);
+    explicit EngineMedia(QObject *parent = nullptr);
     ~EngineMedia();
     uint shuffle_list(uint begin, uint end);
     void play_media(uint index, QList<QString> listModel);
@@ -48,8 +46,12 @@ public:
     void setDuration_Media(const QString &newDuration_Media);
     bool running() const;
     void setRunning(bool newRunning);
+    bool start() const;
+    void setstart(bool newStart);
+    void initialize_Debug();
 
 signals:
+    void EngineFrameChanged(const QVideoFrame &frame);
     void play();
     void pause();
     void next();
@@ -61,6 +63,9 @@ signals:
     void updateSlider();
     void updateDuration();
     void runningChanged();
+    void nextMedia();
+    void previousMedia();
+    void startChanged();
 
 private slots:
     void on_pushButton_Play_clicked();
@@ -83,25 +88,12 @@ public slots:
     void setTypeMedia(bool type);
     uint64_t getDurationForSlider();
     uint64_t getPositionForSlider();
-protected:
-    void paint(QPainter *painter) override {
-        if (!currentFrame.isNull()) {
-            painter->drawImage(boundingRect(), currentFrame);
-        }
-    }
-private slots:
-    void onFrameChanged(const QVideoFrame &frame) {
-        qWarning() << "updateFrame";
-        currentFrame = frame.toImage();
-        update();
-    }
 
 private:
     QImage currentFrame;
     QVideoSink *videoSink;
     QMediaPlayer *M_Player;
     QAudioOutput *audioOutput;
-    // VideoPlayer *videoPlayer;
     QList<QString> listMedia;
     QList<QString> listVideo;
     uint currentIndex{0U};
@@ -114,6 +106,7 @@ private:
     uint64_t position_slider = 0;
     bool m_running = false;
     bool typeSong = true;
+    bool m_start = false;
 };
 
 #endif // ENGINEMEDIA_H

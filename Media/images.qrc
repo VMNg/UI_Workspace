@@ -13,5 +13,7 @@
         <file>iconControlMedia/volume_medium.png</file>
         <file>iconControlMedia/volume_mute.png</file>
         <file>iconControlMedia/playingMusic.png</file>
+        <file>iconControlMedia/full-screen.png</file>
+        <file>iconControlMedia/minimize-screen.png</file>
     </qresource>
 </RCC>

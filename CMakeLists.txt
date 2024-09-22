@@ -32,7 +32,8 @@ qt_add_qml_module(appPBL
     QML_FILES Media/src/SpeedMusic.qml
     QML_FILES Media/src/VolumeMusic.qml
     QML_FILES Media/src/ScreenWithMusic.qml
-    SOURCES Media/src/VideoPlayer.h Media/src/VideoPlayer.cpp
+    SOURCES Media/src/RenderVideo.h
+    QML_FILES Media/src/VideoOutput.qml
 )
 
 target_link_libraries(appPBL
@@ -40,7 +41,6 @@ target_link_libraries(appPBL
         Qt6::Quick
         Qt6::Core
         Qt6::Multimedia
-        Qt6::MultimediaWidgets
 )
 
 if(EXISTS ${CONFIG_FILE})

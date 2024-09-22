@@ -1,7 +1,8 @@
 #include "EngineMedia.h"
 
-EngineMedia::EngineMedia(QQuickPaintedItem *parent) : QQuickPaintedItem(parent) {
+EngineMedia::EngineMedia(QObject *parent) : QObject(parent) {
     qInfo("Initialize media");
+
     //Get list songs
     QDir dirSong("/home/fr/Documents/workspace/UI_Workspace/UI_Workspace/Media/Music");
     QDir dirVideo("/home/fr/Documents/workspace/UI_Workspace/UI_Workspace/Media/Video");
@@ -9,15 +10,10 @@ EngineMedia::EngineMedia(QQuickPaintedItem *parent) : QQuickPaintedItem(parent) 
     QStringList listVideos = dirVideo.entryList(QStringList()<<"*.mp4"<<"*.MP4",QDir::Files);
     EngineMedia::addSong(listSongs, listMedia, urlSong);
     EngineMedia::addSong(listVideos, listVideo, urlVideo);
+
     EngineMedia::initialize();
     //Debug error
-    QObject::connect(M_Player, &QMediaPlayer::errorOccurred, [](QMediaPlayer::Error error){
-        qDebug() << "Media Player Error:" << error;
-    });
-    QObject::connect(M_Player, &QMediaPlayer::mediaStatusChanged,
-                     [](QMediaPlayer::MediaStatus status){
-                         qDebug() << "Media Player Status:" << status;
-                     });
+    // EngineMedia::initialize_Debug();
 }
 
 EngineMedia::~EngineMedia()
@@ -52,15 +48,15 @@ uint EngineMedia::shuffle_list(uint begin, uint end)
 void EngineMedia::play_media(uint index, QList<QString> listModel)
 {
     if(typeSong == true){
-        M_Player->setSource(QUrl::fromLocalFile((listModel[index])));
-        M_Player->play();
         setRunning(true);
-    } else{
-        //UPDATE-PROCESS_VIDEO-HEREEEE
-        // videoPlayer->loadVideo((listModel[index]));
         M_Player->setSource(QUrl::fromLocalFile((listModel[index])));
         M_Player->play();
+        EngineMedia::setstart(true);
+    } else{
         setRunning(false);
+        M_Player->setSource(QUrl::fromLocalFile((listModel[index])));
+        M_Player->play();
+        EngineMedia::setstart(true);
     }
 }
 
@@ -79,12 +75,14 @@ void EngineMedia::on_pushButton_Play_clicked()
 {
     M_Player->play();
     setRunning(true);
+    EngineMedia::setstart(true);
 }
 
 void EngineMedia::on_pushButton_Pause_clicked()
 {
     M_Player->pause();
     setRunning(false);
+    EngineMedia::setstart(false);
 }
 
 void EngineMedia::on_pushButton_Next_clicked()
@@ -104,6 +102,7 @@ void EngineMedia::on_pushButton_Next_clicked()
         }
         play_media(currentIndex, listVideo);
     }
+    emit nextMedia();
 }
 
 void EngineMedia::on_pushButton_Previous_clicked()
@@ -123,6 +122,7 @@ void EngineMedia::on_pushButton_Previous_clicked()
         }
         play_media(currentIndex, listVideo);
     }
+    emit previousMedia();
 }
 
 void EngineMedia::playClicked()
@@ -198,7 +198,7 @@ void EngineMedia::initialize()
     audioOutput->setVolume(0.5);
 
     //Connect slot,signal
-    connect(videoSink, &QVideoSink::videoFrameChanged, this, &EngineMedia::onFrameChanged);
+    connect(videoSink, &QVideoSink::videoFrameChanged, this, &EngineMedia::EngineFrameChanged);
     connect(this, &EngineMedia::play, this, &EngineMedia::on_pushButton_Play_clicked);
     connect(this, &EngineMedia::pause, this, &EngineMedia::on_pushButton_Pause_clicked);
     connect(this, &EngineMedia::next, this, &EngineMedia::on_pushButton_Next_clicked);
@@ -314,4 +314,28 @@ void EngineMedia::setRunning(bool newRunning)
         return;
     m_running = newRunning;
     emit runningChanged();
+}
+
+bool EngineMedia::start() const
+{
+    return m_start;
+}
+
+void EngineMedia::setstart(bool newStart)
+{
+    if (m_start == newStart)
+        return;
+    m_start = newStart;
+    emit startChanged();
+}
+
+void EngineMedia::initialize_Debug()
+{
+    QObject::connect(M_Player, &QMediaPlayer::errorOccurred, [](QMediaPlayer::Error error){
+        qDebug() << "Media Player Error:" << error;
+    });
+    QObject::connect(M_Player, &QMediaPlayer::mediaStatusChanged,
+                     [](QMediaPlayer::MediaStatus status){
+                         qDebug() << "Media Player Status:" << status;
+                     });
 }

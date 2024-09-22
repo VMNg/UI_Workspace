@@ -1,7 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.0
 import QtQuick 2.4
-import Videoplayer 1.0
+import RenderVideo 1.0
 
 Item {
     width: 1080
@@ -14,13 +14,13 @@ Item {
 
         Rectangle {
             id: centerMusic
+            width: 720
+            height: 670
+            color: "#1e1e1e"
             anchors {
                 left: mainScreen.left
                 top: mainScreen.top
             }
-            width: 720
-            height: 670
-            color: "yellow"
 
             //width:720
             //height:200
@@ -40,22 +40,17 @@ Item {
 
             // width: 720
             // height: 470
-            ScreenWithMusic{
-                id: streamScreen
-                visible: false
+            VideoOutput{
                 anchors{
                     top: centerMusic.top
                     left: centerMusic.left
                 }
             }
 
+
             // width: 720
             // height: 470
-            VideoPlayer {
-                id: videoPlayer
-                visible: true
-                width: 720
-                height: 470
+            ScreenWithMusic{
                 anchors{
                     top: centerMusic.top
                     left: centerMusic.left
