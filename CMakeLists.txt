@@ -34,6 +34,8 @@ qt_add_qml_module(appPBL
     QML_FILES Media/src/ScreenWithMusic.qml
     SOURCES Media/src/RenderVideo.h
     QML_FILES Media/src/VideoOutput.qml
+    SOURCES Media/src/FunctionModel.h Media/src/FunctionModel.cpp
+    SOURCES Media/src/RenderVideo.cpp
 )
 
 target_link_libraries(appPBL

@@ -1,5 +1,6 @@
 import QtQuick 2.15
-
+import QtQuick.Controls
+import MDA.Models 1.0
 Row{
     spacing: 80
 
@@ -12,7 +13,7 @@ Row{
             anchors.fill: parent
             onClicked: {
                 status_suffle = !status_suffle;
-                playerControl.setShuffle(status_suffle)
+                FunctionModel.setShuffle(status_suffle)
             }
         }
     }
@@ -24,23 +25,23 @@ Row{
         MouseArea{
             anchors.fill: parent
             onClicked: {
-                playerControl.previous();
+                FunctionModel.previous();
             }
         }
     }
     Image {
         id: play_stop
-        source: playerControl.start ? "qrc:/iconControlMedia/stop-button.png" : "qrc:/iconControlMedia/play-button-arrowhead.png"
+        source: FunctionModel.start ? "qrc:/iconControlMedia/stop-button.png" : "qrc:/iconControlMedia/play-button-arrowhead.png"
 
         width: 64
         height: 64
         MouseArea{
             anchors.fill: parent
             onClicked: {
-                if(playerControl.start){
-                    playerControl.pauseClicked();
+                if(FunctionModel.start){
+                    FunctionModel.pauseClicked();
                 }else {
-                    playerControl.playClicked();
+                    FunctionModel.playClicked();
                 }
             }
         }
@@ -53,7 +54,7 @@ Row{
         MouseArea{
             anchors.fill: parent
             onClicked: {
-                playerControl.next();
+                FunctionModel.next();
             }
         }
     }
@@ -66,13 +67,13 @@ Row{
             anchors.fill: parent
             onClicked: {
                 if(current_list === false){
-                    playListSong.setVisibleUI(false);
-                    playListVideo.setVisibleUI(true);
-                    playerControl.setTypeMedia(false);
+                    FunctionModel.listSongController.setVisibleUI(false);
+                    FunctionModel.listVideoController.setVisibleUI(true);
+                    FunctionModel.setTypeMedia(false);
                 }else {
-                    playListSong.setVisibleUI(true);
-                    playListVideo.setVisibleUI(false);
-                    playerControl.setTypeMedia(true);
+                    FunctionModel.listSongController.setVisibleUI(true);
+                    FunctionModel.listVideoController.setVisibleUI(false);
+                    FunctionModel.setTypeMedia(true);
                 }
                 current_list = !current_list;
             }

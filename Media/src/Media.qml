@@ -2,7 +2,7 @@ import QtQuick 2.15
 import QtQuick.Controls 2.0
 import QtQuick 2.4
 import RenderVideo 1.0
-
+import MDA.Models 1.0
 Item {
     width: 1080
     height: 670

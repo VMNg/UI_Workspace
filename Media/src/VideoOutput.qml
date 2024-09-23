@@ -1,13 +1,14 @@
 import QtQuick 2.15
+import QtQuick.Controls
 import RenderVideo 1.0
-
+import MDA.Models 1.0
 VideoRender{
     id: videoRender
     property bool isFullScreen: false
     width: 720
     height: 470
-    visible: playerControl.running ? false : true
-    mediaEngine: playerControl
+    visible: FunctionModel.running ? false : true
+    funcModel: FunctionModel
     Image {
         id: button_fullScreen
         width: 64

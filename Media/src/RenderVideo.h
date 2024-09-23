@@ -6,48 +6,24 @@
 #include <QVideoSink>
 #include <QPainter>
 #include <QVideoFrame>
-#include <Media/EngineMedia.h>
+#include "FunctionModel.h"
 
 class RenderVideo : public QQuickPaintedItem {
     Q_OBJECT
-    Q_PROPERTY(EngineMedia* mediaEngine READ mediaEngine WRITE setMediaEngine NOTIFY mediaEngineChanged)
-
+    Q_PROPERTY(FunctionModel* funcModel READ funcModel WRITE setFuncModel NOTIFY funcModelChanged)
 public:
-    RenderVideo(QQuickItem *parent = nullptr) : QQuickPaintedItem(parent) {
-        setFlag(ItemHasContents, true);
-    }
-
-    EngineMedia* mediaEngine() const {
-        return m_mediaEngine;
-    }
-
-    void setMediaEngine(EngineMedia* engine) {
-        if (m_mediaEngine != engine) {
-            m_mediaEngine = engine;
-            emit mediaEngineChanged();
-            connect(m_mediaEngine, &EngineMedia::EngineFrameChanged, this, &RenderVideo::onFrameChanged);
-        }
-    }
-
+    RenderVideo(QQuickItem *parent = nullptr);
+    FunctionModel* funcModel();
+    void setFuncModel(FunctionModel* engine);
 signals:
-    void mediaEngineChanged();
-
+    void funcModelChanged();
 protected:
-    void paint(QPainter *painter) override {
-        if (!currentFrame.isNull()) {
-            painter->drawImage(boundingRect(), currentFrame);
-        }
-    }
-
+    void paint(QPainter *painter) override;
 private slots:
-    void onFrameChanged(const QVideoFrame &frame) {
-        currentFrame = frame.toImage();
-        update();
-    }
-
+    void onFrameChanged(const QVideoFrame &frame);
 private:
     QImage currentFrame;
-    EngineMedia *m_mediaEngine = nullptr;
+    FunctionModel *m_funcModel = nullptr;
 };
 
 #endif // RENDERVIDEO_H

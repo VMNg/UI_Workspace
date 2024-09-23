@@ -1,5 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
+import MDA.Models 1.0
 
 Item {
     id: volume
@@ -19,7 +20,7 @@ Item {
                 anchors.fill: parent
                 onClicked:{
                     mySlider.value = 0
-                    playerControl.setVolume(0)
+                    FunctionModel.setVolume(0)
                 }
             }
         }
@@ -77,7 +78,7 @@ Item {
     Connections {
         target: mySlider
         function onMoved(){
-            playerControl.setVolume((mySlider.value)/100)
+            FunctionModel.setVolume((mySlider.value)/100)
         }
     }
 

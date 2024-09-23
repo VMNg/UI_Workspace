@@ -1,6 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
-
+import MDA.Models 1.0
 Item {
     property bool status_media: false
     property bool status_suffle: false

@@ -1,6 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
-
+import MDA.Models 1.0
 Item {
     width: 100
     height: 64
@@ -29,16 +29,16 @@ Item {
             onActivated: {
                 switch (currentIndex) {
                 case 0:
-                    playerControl.setPlayBackMedia(0.5);
+                    FunctionModel.setPlayBackMedia(0.5);
                     break;
                 case 2:
-                    playerControl.setPlayBackMedia(2);
+                    FunctionModel.setPlayBackMedia(2);
                     break;
                 case 3:
-                    playerControl.setPlayBackMedia(4);
+                    FunctionModel.setPlayBackMedia(4);
                     break;
                 default:
-                    playerControl.setPlayBackMedia(1);
+                    FunctionModel.setPlayBackMedia(1);
                 }
             }
         }

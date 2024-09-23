@@ -1,6 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
-
+import MDA.Models 1.0
 Item{
     property int width_slider: 0
     property int height_slider: 0
@@ -13,8 +13,8 @@ Item{
 
         width: width_slider * 0.83
         from: 0
-        value: playerControl.getPositionForSlider()
-        to: playerControl.getDurationForSlider()
+        value: FunctionModel.getPositionForSlider()
+        to: FunctionModel.getDurationForSlider()
         stepSize: 1
         background: Rectangle
         {
@@ -48,7 +48,7 @@ Item{
     Text {
         id: position_current
 
-        text: playerControl.currentPosition;
+        text: FunctionModel.currentPosition;
         anchors{
             right: mySlider.left
             rightMargin: 7
@@ -57,7 +57,7 @@ Item{
     Text {
         id: position_end
 
-        text: playerControl.duration_Media
+        text: FunctionModel.duration_Media
         anchors{
             left: mySlider.right
             leftMargin: 7
@@ -65,23 +65,23 @@ Item{
     }
 
     Connections {
-        target: playerControl
+        target: FunctionModel
         function onUpdateSlider() {
-            mySlider.value = playerControl.getPositionForSlider();
+            mySlider.value = FunctionModel.getPositionForSlider();
         }
     }
 
     Connections {
-        target: playerControl
+        target: FunctionModel
         function onUpdateDuration() {
-            mySlider.to = playerControl.getDurationForSlider();
+            mySlider.to = FunctionModel.getDurationForSlider();
         }
     }
 
     Connections {
         target: mySlider
         function onMoved(){
-            playerControl.setPosition(mySlider.value);
+            FunctionModel.setPosition(mySlider.value);
         }
     }
 

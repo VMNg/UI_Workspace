@@ -1,9 +1,10 @@
 import QtQuick 2.15
-
+import QtQuick.Controls
+import MDA.Models 1.0
 Item {
     width: 720
     height: 470
-    visible: playerControl.running ? true : false
+    visible: FunctionModel.running ? true : false
     Rectangle{
         id: background
         width: 720
@@ -22,7 +23,7 @@ Item {
                 from: 0
                 to: 360
                 duration: 3000
-                running: playerControl.running
+                running: FunctionModel.running
                 loops: Animation.Infinite
             }
         }

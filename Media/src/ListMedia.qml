@@ -1,5 +1,6 @@
 import QtQuick 2.15
-
+import QtQuick.Controls
+import MDA.Models 1.0
 Item {
     Rectangle{
         id: listMusic
@@ -10,10 +11,10 @@ Item {
         ListView {
             id: listSong
             clip: true
-            visible: playListSong.visible
+            visible: FunctionModel.listSongController.visible
             anchors.fill: parent
             spacing: 5
-            model: playListSong
+            model: FunctionModel.listSongController
 
             delegate: Rectangle {
                 id: elementListView
@@ -51,7 +52,7 @@ Item {
                     onClicked: {
                         console.log(index);
                         listSong.currentIndex = index;  // Cập nhật currentIndex
-                        playerControl.playAtIndex(index);
+                        FunctionModel.playAtIndex(index);
                     }
                 }
             }
@@ -60,10 +61,10 @@ Item {
         ListView {
             id: listVideo
             clip: true
-            visible: playListVideo.visible
+            visible: FunctionModel.listVideoController.visible
             anchors.fill: parent
             spacing: 10
-            model: playListVideo
+            model: FunctionModel.listVideoController
 
             delegate: Rectangle {
                 width: 360
@@ -100,7 +101,7 @@ Item {
                     onClicked: {
                         console.log(index);
                         listVideo.currentIndex = index;  // Cập nhật currentIndex
-                        playerControl.playAtIndex(index);
+                        FunctionModel.playAtIndex(index);
                     }
                 }
             }
@@ -108,7 +109,7 @@ Item {
     }
 
     Connections{
-        target: playerControl
+        target: FunctionModel
         function onNextMedia() {
             if (listSong.visible) {
                 listSong.currentIndex += 1;
@@ -126,7 +127,7 @@ Item {
     }
 
     Connections{
-        target: playerControl
+        target: FunctionModel
         function onPreviousMedia() {
             if (listSong.visible) {
                 listSong.currentIndex -= 1;
@@ -140,5 +141,9 @@ Item {
                 }
             }
         }
+    }
+    Component.onCompleted: {
+        console.log("listSong visible: ", FunctionModel.listSongController.visible);
+        console.log("listVideo visible: ", FunctionModel.listVideoController.visible);
     }
 }

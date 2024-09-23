@@ -1,5 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
+import MDA.Models 1.0
 import "./Climate"
 import "./Dashboard"
 import "./Media"
