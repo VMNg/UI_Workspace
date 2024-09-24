@@ -23,6 +23,7 @@ Item {
                 color: "#fff2d7"
 
                 Rectangle {
+                    visible: !isVideoScreen
                     anchors.fill: parent
                     color: index === listSong.currentIndex ? "#7ed6df" : "#ffffff"
                     border.color: "#130f40"
@@ -51,6 +52,7 @@ Item {
                     anchors.fill: parent
                     onClicked: {
                         console.log(index);
+                        FunctionModel.setTypeMedia(true);
                         listSong.currentIndex = index;  // Cập nhật currentIndex
                         FunctionModel.playAtIndex(index);
                         isVideoScreen = false;
@@ -73,6 +75,7 @@ Item {
                 color: "#fff2d7"
 
                 Rectangle {
+                    visible: isVideoScreen
                     anchors.fill: parent
                     color: index === listVideo.currentIndex ? "#7ed6df" : "#ffffff"
                     border.color: "#130f40"
@@ -100,7 +103,7 @@ Item {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        console.log(index);
+                        FunctionModel.setTypeMedia(false);
                         listVideo.currentIndex = index;  // Cập nhật currentIndex
                         FunctionModel.playAtIndex(index);
                         isVideoScreen = true;
@@ -113,15 +116,25 @@ Item {
     Connections{
         target: FunctionModel
         function onNextMedia() {
-            if (listSong.visible) {
+            if (listSong.visible === true && isVideoScreen === true) {
+                listVideo.currentIndex += 1;
+                if (listVideo.currentIndex >= listVideo.count) {
+                    listVideo.currentIndex = 0;
+                }
+            } else if(listSong.visible === true && isVideoScreen === false) {
                 listSong.currentIndex += 1;
                 if (listSong.currentIndex >= listSong.count) {
                     listSong.currentIndex = 0;
                 }
-            } else {
+            } else if(listVideo.visible === true && isVideoScreen === true) {
                 listVideo.currentIndex += 1;
                 if (listVideo.currentIndex >= listVideo.count) {
                     listVideo.currentIndex = 0;
+                }
+            } else if(listVideo.visible === true && isVideoScreen === false){
+                listSong.currentIndex += 1;
+                if (listSong.currentIndex >= listSong.count) {
+                    listSong.currentIndex = 0;
                 }
             }
         }
@@ -129,16 +142,26 @@ Item {
 
     Connections{
         target: FunctionModel
-        function onPreviousMedia() {
-            if (listSong.visible) {
+        function onPreviousMedia() {           
+            if (listSong.visible === true && isVideoScreen === true) {
+                listVideo.currentIndex -= 1;
+                if (listVideo.currentIndex < 0) {
+                    listVideo.currentIndex = listVideo.count - 1;
+                }
+            } else if(listSong.visible === true && isVideoScreen === false) {
                 listSong.currentIndex -= 1;
                 if (listSong.currentIndex < 0) {
                     listSong.currentIndex = listSong.count - 1;
                 }
-            } else {
+            } else if(listVideo.visible === true && isVideoScreen === true) {
                 listVideo.currentIndex -= 1;
                 if (listVideo.currentIndex < 0) {
                     listVideo.currentIndex = listVideo.count - 1;
+                }
+            } else if(listVideo.visible === true && isVideoScreen === false){
+                listSong.currentIndex -= 1;
+                if (listSong.currentIndex < 0) {
+                    listSong.currentIndex = listSong.count - 1;
                 }
             }
         }

@@ -75,11 +75,11 @@ Row{
                 if(current_list === false){
                     FunctionModel.listSongController.setVisibleUI(false);
                     FunctionModel.listVideoController.setVisibleUI(true);
-                    FunctionModel.setTypeMedia(false);
+                    // FunctionModel.setTypeMedia(false);
                 }else {
                     FunctionModel.listSongController.setVisibleUI(true);
                     FunctionModel.listVideoController.setVisibleUI(false);
-                    FunctionModel.setTypeMedia(true);
+                    // FunctionModel.setTypeMedia(true);
                 }
                 current_list = !current_list;
             }
