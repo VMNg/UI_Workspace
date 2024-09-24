@@ -5,8 +5,10 @@ FunctionModel::FunctionModel(QObject *parent)
 {
     m_listSongController = new SongListController();
     m_listVideoController = new VideoListController();
-    QDir dirSong("/home/fr/Documents/workspace/UI_Workspace/UI_Workspace/Media/Music");
-    QDir dirVideo("/home/fr/Documents/workspace/UI_Workspace/UI_Workspace/Media/Video");
+    QString appDir = QCoreApplication::applicationDirPath();
+    QString baseDir = QDir(appDir).filePath("../");
+    QDir dirSong(baseDir + "Media/Music/");
+    QDir dirVideo(baseDir + "Media/Video/");
     QStringList listSongs = dirSong.entryList(QStringList()<<"*.mp3"<<"*.MP3",QDir::Files);
     QStringList listVideos = dirVideo.entryList(QStringList()<<"*.mp4"<<"*.MP4",QDir::Files);
     addSong(listSongs, listMedia, urlSong);
