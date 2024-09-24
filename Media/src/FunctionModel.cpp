@@ -5,8 +5,8 @@ FunctionModel::FunctionModel(QObject *parent)
 {
     m_listSongController = new SongListController();
     m_listVideoController = new VideoListController();
-    QDir dirSong("/home/fr/Moc_project/UI_Workspace/Media/Music/");
-    QDir dirVideo("/home/fr/Moc_project/UI_Workspace/Media/Video/");
+    QDir dirSong("/home/fr/Documents/workspace/UI_Workspace/UI_Workspace/Media/Music");
+    QDir dirVideo("/home/fr/Documents/workspace/UI_Workspace/UI_Workspace/Media/Video");
     QStringList listSongs = dirSong.entryList(QStringList()<<"*.mp3"<<"*.MP3",QDir::Files);
     QStringList listVideos = dirVideo.entryList(QStringList()<<"*.mp4"<<"*.MP4",QDir::Files);
     addSong(listSongs, listMedia, urlSong);
@@ -113,14 +113,18 @@ void FunctionModel::handle_mediaStatusChanged(QMediaPlayer::MediaStatus status)
 void FunctionModel::on_pushButton_Play_clicked()
 {
     M_Player->play();
-    setRunning(true);
+    if(typeSong == true){
+        setRunning(true);
+    }
     FunctionModel::setstart(true);
 }
 
 void FunctionModel::on_pushButton_Pause_clicked()
 {
     M_Player->pause();
-    setRunning(false);
+    if(typeSong == true){
+        setRunning(false);
+    }
     FunctionModel::setstart(false);
 }
 
@@ -263,6 +267,7 @@ void FunctionModel::initialize()
 
 void FunctionModel::playAtIndex(uint index)
 {
+    currentIndex = index;
     if(typeSong == true){
         if((index < 0) ||  (index > (listMedia.size() -1))){
             return;
@@ -306,6 +311,7 @@ void FunctionModel::setPlayBackMedia(qreal rate)
 void FunctionModel::setTypeMedia(bool type)
 {
     typeSong = type;
+    qWarning() << "changed Type: " << type;
 }
 
 QString FunctionModel::currentPosition() const

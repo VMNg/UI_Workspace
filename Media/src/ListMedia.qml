@@ -53,6 +53,7 @@ Item {
                         console.log(index);
                         listSong.currentIndex = index;  // Cập nhật currentIndex
                         FunctionModel.playAtIndex(index);
+                        isVideoScreen = false;
                     }
                 }
             }
@@ -102,6 +103,7 @@ Item {
                         console.log(index);
                         listVideo.currentIndex = index;  // Cập nhật currentIndex
                         FunctionModel.playAtIndex(index);
+                        isVideoScreen = true;
                     }
                 }
             }
@@ -114,7 +116,6 @@ Item {
             if (listSong.visible) {
                 listSong.currentIndex += 1;
                 if (listSong.currentIndex >= listSong.count) {
-                    console.log("AAAA");
                     listSong.currentIndex = 0;
                 }
             } else {
@@ -132,12 +133,12 @@ Item {
             if (listSong.visible) {
                 listSong.currentIndex -= 1;
                 if (listSong.currentIndex < 0) {
-                    listSong.currentIndex = listVideo.count + 1;
+                    listSong.currentIndex = listSong.count - 1;
                 }
             } else {
                 listVideo.currentIndex -= 1;
                 if (listVideo.currentIndex < 0) {
-                    listVideo.currentIndex = listVideo.count + 1;
+                    listVideo.currentIndex = listVideo.count - 1;
                 }
             }
         }

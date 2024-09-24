@@ -7,13 +7,13 @@ VideoRender{
     property bool isFullScreen: false
     width: 720
     height: 470
-    visible: FunctionModel.running ? false : true
+    visible: isVideoScreen
     funcModel: FunctionModel
     Image {
         id: button_fullScreen
         width: 64
         height: 64
-        visible: true
+        visible: isVideoScreen
         source: isFullScreen ? "qrc:/iconControlMedia/minimize-screen.png" : "qrc:/iconControlMedia/full-screen.png"
         anchors{
             right: parent.right
@@ -32,6 +32,13 @@ VideoRender{
                     isFullScreen = true
                 }
             }
+        }
+    }
+    MouseArea{
+        width: videoRender.width - 64
+        height: videoRender.height - 64
+        onClicked:{
+
         }
     }
 }

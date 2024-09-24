@@ -4,6 +4,9 @@ import QtQuick 2.4
 import RenderVideo 1.0
 import MDA.Models 1.0
 Item {
+    property bool isVideoScreen: false
+    property bool isPauseMusic: true
+
     width: 1080
     height: 670
 
@@ -41,6 +44,7 @@ Item {
             // width: 720
             // height: 470
             VideoOutput{
+                z: 1;
                 anchors{
                     top: centerMusic.top
                     left: centerMusic.left

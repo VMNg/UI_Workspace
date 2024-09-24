@@ -4,7 +4,7 @@ import MDA.Models 1.0
 Item {
     width: 720
     height: 470
-    visible: FunctionModel.running ? true : false
+    visible: !isVideoScreen
     Rectangle{
         id: background
         width: 720
@@ -16,6 +16,7 @@ Item {
             source: "qrc:/iconControlMedia/playingMusic.png"
             width: 256
             height: 256
+            visible: !isPauseMusic
             anchors.centerIn: background
 
             NumberAnimation on rotation {
@@ -26,6 +27,15 @@ Item {
                 running: FunctionModel.running
                 loops: Animation.Infinite
             }
+        }
+
+        Image{
+            id: imageSongPause
+            source: "qrc:/iconControlMedia/playingMusic.png"
+            width: 256
+            height: 256
+            visible: isPauseMusic
+            anchors.centerIn: background
         }
     }
 }

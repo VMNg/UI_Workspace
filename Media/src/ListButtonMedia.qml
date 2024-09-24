@@ -40,8 +40,14 @@ Row{
             onClicked: {
                 if(FunctionModel.start){
                     FunctionModel.pauseClicked();
+                    if(isVideoScreen === false){
+                        isPauseMusic = true;
+                    }
                 }else {
                     FunctionModel.playClicked();
+                    if(isVideoScreen === false){
+                        isPauseMusic = false;
+                    }
                 }
             }
         }
