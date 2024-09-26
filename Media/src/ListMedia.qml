@@ -56,6 +56,7 @@ Item {
                         listSong.currentIndex = index;  // Cập nhật currentIndex
                         FunctionModel.playAtIndex(index);
                         isVideoScreen = false;
+                        isPauseMusic = false;
                     }
                 }
             }
