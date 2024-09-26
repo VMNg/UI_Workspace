@@ -227,8 +227,10 @@ void FunctionModel::handle_suffleMedia()
 
 void FunctionModel::addSong(const QStringList& listSongs, QList<QString>& list, QString urlPath)
 {
+    QString appDir = QCoreApplication::applicationDirPath();
+    QString baseDir = QDir(appDir).filePath("../");
     foreach (QString filename, listSongs) {
-        list.append(urlPath + filename);
+        list.append(baseDir + urlPath + filename);
         if(list == listMedia){
             m_listSongController->addSong(filename);
         }

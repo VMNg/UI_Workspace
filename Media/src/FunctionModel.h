@@ -112,8 +112,8 @@ private:
     QList<QString> listMedia;
     QList<QString> listVideo;
     uint currentIndex{0U};
-    const QString urlSong = "/home/fr/Documents/workspace/UI_Workspace/UI_Workspace/Media/Music/";
-    const QString urlVideo = "/home/fr/Documents/workspace/UI_Workspace/UI_Workspace/Media/Video/";
+    const QString urlSong = "Media/Music/";
+    const QString urlVideo = "Media/Video/";
     bool m_shuffle;
     QString m_currentPosition = "NA::NA";
     QString m_duration_Media = "NA::NA";
