@@ -6,5 +6,12 @@
         <file>iconControlMedia/rewind-button.png</file>
         <file>iconControlMedia/stop-button.png</file>
         <file>iconControlMedia/suffle.png</file>
+        <file>src/ListButtonMedia.qml</file>
+        <file>src/ListMedia.qml</file>
+        <file>src/ScreenWithMusic.qml</file>
+        <file>src/SliderMedia.qml</file>
+        <file>src/SpeedMusic.qml</file>
+        <file>src/VideoOutput.qml</file>
+        <file>src/VolumeMusic.qml</file>
     </qresource>
 </RCC>

@@ -8,6 +8,8 @@
 #include <QtAppManLauncher/launchermain.h>
 #include <QtAppManLauncher/dbusapplicationinterface.h>
 #include <QtAppManLauncher/dbusnotification.h>
+#include "FunctionModel.h"
+#include "RenderVideo.h"
 
 
 int main(int argc, char *argv[])
@@ -16,7 +18,7 @@ int main(int argc, char *argv[])
     QtAM::Logging::setApplicationId("media");
 
     QtAM::LauncherMain::initialize();
-    QApplication app(argc, argv);
+    QGuiApplication app(argc, argv);
     QtAM::LauncherMain launcher;
 
     launcher.registerWaylandExtensions();
@@ -25,6 +27,8 @@ int main(int argc, char *argv[])
     launcher.setupDBusConnections();
 
     QQmlApplicationEngine engine;
+    qmlRegisterSingletonInstance<FunctionModel>("MDA.Models",1,0,"FunctionModel",FunctionModel::initialize(&engine));
+    qmlRegisterType<RenderVideo>("RenderVideo", 1, 0, "VideoRender");
     const QUrl url(QStringLiteral("qrc:/media/Main.qml"));
     QObject::connect(
         &engine,
