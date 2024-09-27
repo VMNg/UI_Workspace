@@ -8,10 +8,15 @@
 #include <QtAppManLauncher/launchermain.h>
 #include <QtAppManLauncher/dbusapplicationinterface.h>
 #include <QtAppManLauncher/dbusnotification.h>
+#include "DashboardInterface.h"
+#include <QGuiApplication>
+#include <QQmlApplicationEngine>
+#include <QQmlContext>
 
 
 int main(int argc, char *argv[])
 {
+
     QtAM::Logging::initialize(argc, argv);
     QtAM::Logging::setApplicationId("dashboard");
 
@@ -23,8 +28,13 @@ int main(int argc, char *argv[])
     launcher.loadConfiguration();
     launcher.setupLogging(false, launcher.loggingRules(), QString(), launcher.useAMConsoleLogger());
     launcher.setupDBusConnections();
-
     QQmlApplicationEngine engine;
+    DashboardInterface tempModel;
+
+    QDBusConnection::sessionBus().registerService("com.example.climate.adapter");
+    engine.rootContext()->setContextProperty("tempModel", &tempModel);
+
+
     const QUrl url(QStringLiteral("qrc:/dashboard/Main.qml"));
     QObject::connect(
         &engine,
@@ -42,6 +52,7 @@ int main(int argc, char *argv[])
     QObject::connect(&iface, &QtAM::DBusApplicationInterface::quit, [&iface] () {
         iface.acknowledgeQuit();
     });
+
 
 
     return app.exec();

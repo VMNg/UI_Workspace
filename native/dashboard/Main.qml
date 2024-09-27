@@ -6,6 +6,11 @@ Window {
     color: "#1E3A5F"
 
     Rectangle{
+        Text {
+            id: anch
+            text: tempModel.tempModel
+            font.pixelSize: 500
+        }
         anchors{
             top: parent.top
             topMargin: 10
