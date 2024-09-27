@@ -21,21 +21,32 @@ find_package(Qt6 COMPONENTS AppManLauncherPrivate)
 
 qt_add_executable(climate
     main.cpp
+    FunctionModel.h FunctionModel.cpp
+    ClimateEngine.h ClimateEngine.cpp
+    ClimateInterface.h ClimateInterface.cpp
+    climate.qrc
 )
+
 
 qt_add_qml_module(climate
     URI climate
     VERSION 1.0
     QML_FILES
-        Main.qml
+        Screens/Main.qml
+        Screens/ButtonFunction.qml
+        Screens/Fan.qml
+        Screens/Functions.qml
+        Screens/Temperature.qml
+        RESOURCES climate.qrc
 )
+
 
 set_target_properties(climate PROPERTIES
     WIN32_EXECUTABLE TRUE
     MACOSX_BUNDLE TRUE
     RUNTIME_OUTPUT_DIRECTORY ../../apps/climate
 )
-target_link_libraries(climate 
+target_link_libraries(climate
     PRIVATE Qt6::Quick    
     PUBLIC
         Qt::Core

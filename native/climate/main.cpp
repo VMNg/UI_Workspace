@@ -8,6 +8,10 @@
 #include <QtAppManLauncher/dbusapplicationinterface.h>
 #include <QtAppManLauncher/dbusnotification.h>
 
+#include "ClimateEngine.h"
+#include "ClimateAdaptor.h"
+#include "ClimateInterface.h"
+
 
 int main(int argc, char *argv[])
 {
@@ -23,8 +27,11 @@ int main(int argc, char *argv[])
     launcher.setupLogging(false, launcher.loggingRules(), QString(), launcher.useAMConsoleLogger());
     launcher.setupDBusConnections();
 
+    ClimateEngine climateEngine;
+    climateEngine.doInitialize();
+
     QQmlApplicationEngine engine;
-    const QUrl url(QStringLiteral("qrc:/climate/Main.qml"));
+    const QUrl url(QStringLiteral("qrc:/climate/Screens/Main.qml"));
     QObject::connect(
         &engine,
         &QQmlApplicationEngine::objectCreated,

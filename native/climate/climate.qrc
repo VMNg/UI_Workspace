@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>image/active-seat-L.png</file>
+        <file>image/active-seat-R.png</file>
+        <file>image/Angel.png</file>
+        <file>image/defrost.png</file>
+        <file>image/down.png</file>
+        <file>image/front-defrost.png</file>
+        <file>image/move.png</file>
+        <file>image/rear.png</file>
+        <file>image/rear-active.png</file>
+        <file>image/seat-heater-L.png</file>
+        <file>image/seat-heater-R.png</file>
+        <file>image/up.png</file>
+    </qresource>
+</RCC>

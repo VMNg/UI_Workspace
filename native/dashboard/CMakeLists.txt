@@ -21,6 +21,7 @@ find_package(Qt6 COMPONENTS AppManLauncherPrivate)
 
 qt_add_executable(dashboard
     main.cpp
+    DashboardInterface.h DashboardInterface.cpp
 )
 
 qt_add_qml_module(dashboard
