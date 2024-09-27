@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
         },
         Qt::QueuedConnection);
     engine.load(url);
-    // Application interface for handling quit
+    //Application interface for handling quit
     QtAM::DBusApplicationInterface iface(launcher.p2pDBusName(), launcher.notificationDBusName());
     iface.initialize();
     QObject::connect(&iface, &QtAM::DBusApplicationInterface::quit, [&iface] () {

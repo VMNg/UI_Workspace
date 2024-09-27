@@ -5,10 +5,10 @@ FunctionModel::FunctionModel(QObject *parent)
 {
     m_listSongController = new SongListController();
     m_listVideoController = new VideoListController();
-    QString appDir = QCoreApplication::applicationDirPath();
-    QString baseDir = QDir(appDir).filePath("../");
-    QDir dirSong(baseDir + "Media/Music/");
-    QDir dirVideo(baseDir + "Media/Video/");
+    //QString appDir = QCoreApplication::applicationDirPath();
+    //QString baseDir = QDir(appDir).filePath("../");
+    QDir dirSong("/home/fr/Moc_project_2/UI_Workspace/native/media/Music/");
+    QDir dirVideo("/home/fr/Moc_project_2/UI_Workspace/native/media/Video/");
     QStringList listSongs = dirSong.entryList(QStringList()<<"*.mp3"<<"*.MP3",QDir::Files);
     QStringList listVideos = dirVideo.entryList(QStringList()<<"*.mp4"<<"*.MP4",QDir::Files);
     addSong(listSongs, listMedia, urlSong);
@@ -227,10 +227,10 @@ void FunctionModel::handle_suffleMedia()
 
 void FunctionModel::addSong(const QStringList& listSongs, QList<QString>& list, QString urlPath)
 {
-    QString appDir = QCoreApplication::applicationDirPath();
-    QString baseDir = QDir(appDir).filePath("../");
+    // QString appDir = QCoreApplication::applicationDirPath();
+    // QString baseDir = QDir(appDir).filePath("../");
     foreach (QString filename, listSongs) {
-        list.append(baseDir + urlPath + filename);
+        list.append(urlPath + filename);
         if(list == listMedia){
             m_listSongController->addSong(filename);
         }

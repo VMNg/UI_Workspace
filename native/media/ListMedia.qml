@@ -4,7 +4,7 @@ import MDA.Models 1.0
 Item {
     Rectangle{
         id: listMusic
-        width: 360
+        width: 600
         height: 670
         color: "#30336b"
 
@@ -18,7 +18,7 @@ Item {
 
             delegate: Rectangle {
                 id: elementListView
-                width: 360
+                width: 600
                 height: 50
                 color: "#fff2d7"
 
@@ -71,7 +71,7 @@ Item {
             model: FunctionModel.listVideoController
 
             delegate: Rectangle {
-                width: 360
+                width: 600
                 height: 50
                 color: "#fff2d7"
 
