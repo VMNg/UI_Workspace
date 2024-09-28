@@ -11,23 +11,23 @@
 class DashboardInterface : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(int tmp READ tmp WRITE setTmp NOTIFY tmpChanged FINAL)
+    Q_PROPERTY(int temp READ temp WRITE setTemp NOTIFY tempChanged FINAL)
 public:
     explicit DashboardInterface(QObject *parent = nullptr);
 
-    int tmp() const;
-    void setTmp(int newTmp);
+    int temp() const;
+    void setTemp(int newTemp);
 
 public slots:
     void onDataReceived(int data) {
         qInfo() << "DashboardInterface::onDataReceived";
-        setTmp(data);
+        setTemp(data);
     }
 
 signals:
-    void tmpChanged();
+    void tempChanged();
 private:
-    int m_tmp;
+    int m_temp;
 };
 
 class DashboardInterfaceAdaptor : public QDBusAbstractAdaptor

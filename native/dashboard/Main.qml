@@ -6,11 +6,6 @@ Window {
     color: "#1E3A5F"
 
     Rectangle{
-        Text {
-            id: anch
-            text: tempModel.tempModel
-            font.pixelSize: 500
-        }
         anchors{
             top: parent.top
             topMargin: 10
@@ -68,6 +63,43 @@ Window {
                 Layout.fillHeight: true
                 Layout.preferredWidth: 50
                 Layout.preferredHeight: 50
+
+                Text {
+                    id: inside
+                    text: "Inside"
+                    font.pixelSize: 30
+                    color: "white"
+                    anchors{
+                        top: parent.top
+                        topMargin: 10
+                        left: parent.left
+                        leftMargin: 50
+                    }
+                }
+                Text {
+                    id: temp
+                    text: tempModel.temp
+                    font.pixelSize: 70
+                    color: "white"
+                    anchors{
+                        bottom: parent.bottom
+                        bottomMargin: 15
+                        left: inside.left
+                    }
+                }
+                Text {
+                    id: degree
+                    text: "°C"
+                    font.pixelSize: 40
+                    color: "white"
+                    anchors{
+                        bottom: parent.bottom
+                        bottomMargin: 20
+                        right: parent.right
+                        rightMargin: 50
+                    }
+                }
+
             }
             Rectangle{
                 color: "grey"

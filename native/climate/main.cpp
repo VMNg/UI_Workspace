@@ -29,6 +29,7 @@ int main(int argc, char *argv[])
 
     ClimateEngine climateEngine;
     climateEngine.doInitialize();
+    FunctionModel::getInstance().dataTemperatureChanged(round( (FunctionModel::getInstance().temperature() + FunctionModel::getInstance().temperatureSup() ) / 2 ));
 
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/climate/Screens/Main.qml"));

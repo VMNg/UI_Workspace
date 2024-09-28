@@ -29,7 +29,7 @@ signals:
 private:
     int m_temperature;
     int m_temperatureSup;
-    ClimateInterface* m_priv = nullptr;
+    ClimateInterface* m_priv = new ClimateInterface() ;
 
 };
 
