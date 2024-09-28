@@ -1,6 +1,5 @@
 import QtQuick
 import QtQuick.Layouts
-
 Window {
     visible: true
     color: "#1E3A5F"
@@ -48,13 +47,59 @@ Window {
             }
             Rectangle{
                 id: doorLock
-                color: "grey"
-                opacity: 0.1
+                color: "white"
+                opacity: 1
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 Layout.maximumWidth: grid.width - gear.width - speed.width
                 Layout.preferredHeight: 100
                 Layout.columnSpan: 3
+                Column{
+                    anchors.centerIn: parent
+                    spacing: 30
+                    Text{
+                        id:txtSong
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        text: funcProvider.songReceive
+                        color: "#80FF00"
+                        font.pixelSize:40
+                    }
+                    Row{
+                        spacing: 30
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        Image {
+                            id: suffle
+                            source: "qrc:/iconControlMedia/suffle.png"
+                            width: 64
+                            height: 64
+                        }
+                        Image {
+                            id: previous
+                            source: "qrc:/iconControlMedia/rewind-button.png"
+                            width: 64
+                            height: 64
+                        }
+                        Image {
+                            id: play_stop
+                            source:funcProvider.statePlay ? "qrc:/iconControlMedia/stop-button.png" :"qrc:/iconControlMedia/play-button-arrowhead.png"
+                            width: 64
+                            height: 64
+                        }
+                        Image {
+                            id: next
+                            source: "qrc:/iconControlMedia/forward-button.png"
+                            width: 64
+                            height: 64
+                        }
+                        Image {
+                            id: modeMedia
+                            source:"qrc:/iconControlMedia/playlist-song.png"
+                            width: 64
+                            height: 64
+                        }
+                    }
+                }
+
             }
             Rectangle{
                 color: "grey"

@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/">
+        <file>iconControlMedia/forward-button.png</file>
+        <file>iconControlMedia/full-screen.png</file>
+        <file>iconControlMedia/minimize-screen.png</file>
+        <file>iconControlMedia/play-button-arrowhead.png</file>
+        <file>iconControlMedia/play-list.png</file>
+        <file>iconControlMedia/playingMusic.png</file>
+        <file>iconControlMedia/playlist-song.png</file>
+        <file>iconControlMedia/playlist-video.png</file>
+        <file>iconControlMedia/rewind-button.png</file>
+        <file>iconControlMedia/speedMedia.png</file>
+        <file>iconControlMedia/stop-button.png</file>
+        <file>iconControlMedia/suffle.png</file>
+        <file>iconControlMedia/suffle_active.png</file>
+        <file>iconControlMedia/volume_high.png</file>
+        <file>iconControlMedia/volume_medium.png</file>
+        <file>iconControlMedia/volume_mute.png</file>
+    </qresource>
+</RCC>
