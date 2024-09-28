@@ -14,7 +14,7 @@ endif()
 
 set(INSTALL_EXAMPLEDIR "${INSTALL_EXAMPLESDIR}/applicationmanager/application-features/apps/dashboard")
 
-find_package(Qt6 6.2 REQUIRED COMPONENTS Quick)
+find_package(Qt6 6.2 REQUIRED COMPONENTS Quick DBus)
 find_package(Qt6 COMPONENTS Core)
 find_package(Qt6 COMPONENTS Gui)
 find_package(Qt6 COMPONENTS AppManLauncherPrivate)
@@ -22,6 +22,7 @@ find_package(Qt6 COMPONENTS AppManLauncherPrivate)
 qt_add_executable(dashboard
     main.cpp
     DashboardInterface.h DashboardInterface.cpp
+    images.qrc
 )
 
 qt_add_qml_module(dashboard
@@ -29,6 +30,8 @@ qt_add_qml_module(dashboard
     VERSION 1.0
     QML_FILES
         Main.qml
+    SOURCES FunctionModelAdaptor.h FunctionModelAdaptor.cpp
+    SOURCES FunctionModelProvider.h FunctionModelProvider.cpp
 )
 
 set_target_properties(dashboard PROPERTIES
@@ -40,6 +43,7 @@ target_link_libraries(dashboard
     PRIVATE Qt6::Quick    
     PUBLIC
         Qt::Core
+        Qt6::DBus
         Qt::Gui
         Qt::AppManLauncherPrivate
 )

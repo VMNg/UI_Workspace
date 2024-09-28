@@ -94,7 +94,11 @@
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">qt.qt6.624.gcc_64_kit</value>
    <value type="qlonglong" key="ProjectExplorer.Target.ActiveBuildConfiguration">0</value>
    <value type="qlonglong" key="ProjectExplorer.Target.ActiveDeployConfiguration">0</value>
+<<<<<<< HEAD
    <value type="qlonglong" key="ProjectExplorer.Target.ActiveRunConfiguration">2</value>
+=======
+   <value type="qlonglong" key="ProjectExplorer.Target.ActiveRunConfiguration">3</value>
+>>>>>>> 4fae4548a5466b080d1372ea1d9593f6610e5341
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.0">
     <value type="QString" key="CMake.Build.Type">Debug</value>
     <value type="int" key="CMake.Configure.BaseEnvironment">2</value>
@@ -393,14 +397,24 @@
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="bool" key="PE.EnvironmentAspect.PrintOnRun">false</value>
     <value type="QString" key="PerfRecordArgsId">-e cpu-cycles --call-graph dwarf,4096 -F 250</value>
+<<<<<<< HEAD
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">dashboard</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeRunConfiguration.dashboard</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">dashboard</value>
+=======
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">climate</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeRunConfiguration.climate</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">climate</value>
+>>>>>>> 4fae4548a5466b080d1372ea1d9593f6610e5341
     <value type="bool" key="ProjectExplorer.RunConfiguration.Customized">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+<<<<<<< HEAD
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/fr/Documents/DEV2/UI_Workspace/build/Desktop_Qt_6_2_4_GCC_64bit-Debug/apps/dashboard</value>
+=======
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/fr/Moc_project/UI_Workspace/UI_Workspace/build/Desktop_Qt_6_2_4_GCC_64bit-Debug/apps/climate</value>
+>>>>>>> 4fae4548a5466b080d1372ea1d9593f6610e5341
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.1">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
@@ -412,14 +426,24 @@
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="bool" key="PE.EnvironmentAspect.PrintOnRun">false</value>
     <value type="QString" key="PerfRecordArgsId">-e cpu-cycles --call-graph dwarf,4096 -F 250</value>
+<<<<<<< HEAD
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">media</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeRunConfiguration.media</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">media</value>
+=======
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">dashboard</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeRunConfiguration.dashboard</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">dashboard</value>
+>>>>>>> 4fae4548a5466b080d1372ea1d9593f6610e5341
     <value type="bool" key="ProjectExplorer.RunConfiguration.Customized">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+<<<<<<< HEAD
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/fr/Documents/DEV2/UI_Workspace/build/Desktop_Qt_6_2_4_GCC_64bit-Debug/apps/media</value>
+=======
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/fr/Moc_project/UI_Workspace/UI_Workspace/build/Desktop_Qt_6_2_4_GCC_64bit-Debug/apps/dashboard</value>
+>>>>>>> 4fae4548a5466b080d1372ea1d9593f6610e5341
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.2">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
@@ -431,14 +455,24 @@
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="bool" key="PE.EnvironmentAspect.PrintOnRun">false</value>
     <value type="QString" key="PerfRecordArgsId">-e cpu-cycles --call-graph dwarf,4096 -F 250</value>
+<<<<<<< HEAD
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">mock-dev2</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeRunConfiguration.mock-dev2</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">mock-dev2</value>
+=======
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">media</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeRunConfiguration.media</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">media</value>
+>>>>>>> 4fae4548a5466b080d1372ea1d9593f6610e5341
     <value type="bool" key="ProjectExplorer.RunConfiguration.Customized">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+<<<<<<< HEAD
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/fr/Documents/DEV2/UI_Workspace/build/Desktop_Qt_6_2_4_GCC_64bit-Debug</value>
+=======
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/fr/Moc_project/UI_Workspace/UI_Workspace/build/Desktop_Qt_6_2_4_GCC_64bit-Debug/apps/media</value>
+>>>>>>> 4fae4548a5466b080d1372ea1d9593f6610e5341
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.3">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
@@ -450,14 +484,24 @@
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="bool" key="PE.EnvironmentAspect.PrintOnRun">false</value>
     <value type="QString" key="PerfRecordArgsId">-e cpu-cycles --call-graph dwarf,4096 -F 250</value>
+<<<<<<< HEAD
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Climate</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeRunConfiguration.Climate</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">Climate</value>
+=======
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">mock-dev2</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeRunConfiguration.mock-dev2</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">mock-dev2</value>
+>>>>>>> 4fae4548a5466b080d1372ea1d9593f6610e5341
     <value type="bool" key="ProjectExplorer.RunConfiguration.Customized">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+<<<<<<< HEAD
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/fr/Documents/DEV2/UI_Workspace/build/Desktop_Qt_6_2_4_GCC_64bit-Debug/apps/Climate</value>
+=======
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/fr/Moc_project/UI_Workspace/UI_Workspace/build/Desktop_Qt_6_2_4_GCC_64bit-Debug</value>
+>>>>>>> 4fae4548a5466b080d1372ea1d9593f6610e5341
    </valuemap>
    <value type="qlonglong" key="ProjectExplorer.Target.RunConfigurationCount">4</value>
   </valuemap>
