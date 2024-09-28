@@ -39,7 +39,7 @@ void FunctionModel::setTemperature(int newTemperature)
         return;
     m_temperature = newTemperature;
     emit temperatureChanged();
-    dataTemperatureChanged(newTemperature);
+    dataTemperatureChanged(round((newTemperature + m_temperatureSup) / 2.0));
 }
 
 int FunctionModel::temperatureSup() const
@@ -53,6 +53,7 @@ void FunctionModel::setTemperatureSup(int newTemperatureSup)
         return;
     m_temperatureSup = newTemperatureSup;
     emit temperatureSupChanged();
+    dataTemperatureChanged(round((m_temperature + newTemperatureSup) / 2.0));
 }
 
 void FunctionModel::dataTemperatureChanged(int data)

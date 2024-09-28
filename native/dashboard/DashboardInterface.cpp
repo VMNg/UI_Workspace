@@ -5,19 +5,21 @@ DashboardInterface::DashboardInterface(QObject *parent)
 {
     new DashboardInterfaceAdaptor(this);
     QDBusConnection::sessionBus().registerObject("/DashboardAdapter", this);
+    m_temp = 20;
 }
 
-int DashboardInterface::tmp() const
+int DashboardInterface::temp() const
 {
-    return m_tmp;
+    return m_temp;
 }
 
-void DashboardInterface::setTmp(int newTmp)
+void DashboardInterface::setTemp(int newTemp)
 {
-    if (m_tmp == newTmp)
+    if (m_temp == newTemp)
         return;
-    m_tmp = newTmp;
-    emit tmpChanged();
+    m_temp = newTemp;
+    emit tempChanged();
+    qWarning() << "nhan duoc" << newTemp;
 }
 
 DashboardInterfaceAdaptor::DashboardInterfaceAdaptor(DashboardInterface *parent)

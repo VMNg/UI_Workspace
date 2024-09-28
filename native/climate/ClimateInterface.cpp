@@ -10,5 +10,5 @@ ClimateInterface::ClimateInterface(QObject *parent)
 
 void ClimateInterface::sendDataTemp(int data){
     asyncCall("onDataReceived",data);
-    qDebug() << "sender : " << data;
+    qWarning() << "sender : " << data;
 }
