@@ -132,7 +132,7 @@ Item {
                 if (listVideo.currentIndex >= listVideo.count) {
                     listVideo.currentIndex = 0;
                 }
-                var selectedVideoName1 = FunctionModel.listVideoController.getVideoName(listSong.currentIndex);
+                var selectedVideoName1 = FunctionModel.listVideoController.getVideoName(listVideo.currentIndex);
                 functionModelInterface.sendSongName(selectedVideoName1)
                 functionModelInterface.sendPlayState(FunctionModel.start)
             } else if(listSong.visible === true && isVideoScreen === false) {
@@ -148,7 +148,7 @@ Item {
                 if (listVideo.currentIndex >= listVideo.count) {
                     listVideo.currentIndex = 0;
                 }
-                var selectedVideoName = FunctionModel.listVideoController.getVideoName(listSong.currentIndex);
+                var selectedVideoName = FunctionModel.listVideoController.getVideoName(listVideo.currentIndex);
                 functionModelInterface.sendSongName(selectedVideoName)
                 functionModelInterface.sendPlayState(FunctionModel.start)
             } else if(listVideo.visible === true && isVideoScreen === false){
@@ -171,7 +171,7 @@ Item {
                 if (listVideo.currentIndex < 0) {
                     listVideo.currentIndex = listVideo.count - 1;
                 }
-                var selectedVideoName1 = FunctionModel.listVideoController.getVideoName(listSong.currentIndex);
+                var selectedVideoName1 = FunctionModel.listVideoController.getVideoName(listVideo.currentIndex);
                 functionModelInterface.sendSongName(selectedVideoName1)
                 functionModelInterface.sendPlayState(FunctionModel.start)
             } else if(listSong.visible === true && isVideoScreen === false) {
@@ -187,7 +187,7 @@ Item {
                 if (listVideo.currentIndex < 0) {
                     listVideo.currentIndex = listVideo.count - 1;
                 }
-                var selectedVideoName = FunctionModel.listVideoController.getVideoName(listSong.currentIndex);
+                var selectedVideoName = FunctionModel.listVideoController.getVideoName(listVideo.currentIndex);
                 functionModelInterface.sendSongName(selectedVideoName)
                 functionModelInterface.sendPlayState(FunctionModel.start)
             } else if(listVideo.visible === true && isVideoScreen === false){
