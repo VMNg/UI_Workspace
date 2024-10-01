@@ -31,9 +31,9 @@ int main(int argc, char *argv[])
     // launcher.setupDBusConnections();
 
     QQmlApplicationEngine engine;
-    DashboardInterface tempModel;
+    DashboardInterface climateModel;
     QDBusConnection::sessionBus().registerService("com.example.climate.adapter");
-    engine.rootContext()->setContextProperty("tempModel", &tempModel);
+    engine.rootContext()->setContextProperty("ClimateModel", &climateModel);
     FunctionModelProvider *funcProvider = new FunctionModelProvider(&engine);
     new FunctionModelAdaptor(funcProvider);
     QDBusConnection connection = QDBusConnection::sessionBus();

@@ -1,10 +1,12 @@
 import QtQuick 2.15
+import Climate.Models 1.0
 Rectangle {
     id: root
     property bool active:  false
     property bool activeButton : false
     property string sourceFunction
     property string textFunction
+    property string type : textFunction
     property int clickCount: 0
     signal clicked()
 
@@ -67,6 +69,28 @@ Rectangle {
                     root.clickCount += 1
                     active = !active
                     root.clicked()
+                    if(root.type === "Rear"){
+                        FunctionModel.activeRear = active
+                    }
+                    else if(root.type === "Front"){
+                        FunctionModel.activeFront = active
+                    }
+                    else if(root.type === "SeatHeaterR"){
+                        if(root.clickCount === 0){
+                            FunctionModel.seatHeaterRStatus = false;
+                        }
+                        else{
+                            FunctionModel.seatHeaterRStatus = true;
+                        }
+                    }
+                    else if(root.type === "SeatHeaterL"){
+                        if(root.clickCount === 0){
+                            FunctionModel.seatHeaterLStatus = false;
+                        }
+                        else{
+                            FunctionModel.seatHeaterLStatus = true;
+                        }
+                    }
                 } else {
                     scaleImg.start()
                     scaleText.start()

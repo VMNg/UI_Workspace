@@ -1,5 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Controls.Basic
+import Climate.Models 1.0
 
 
 //============================== FAN SPEED FUNCTION ==========================
@@ -8,13 +9,15 @@ Item {
     id: fan
     width: 140
     height: 530
+
+    property bool isFirstLaunch: true
     ListView {
         id: listView
         anchors.fill: fan
         width: parent.width
         height: parent.height
         interactive: false
-        highlightMoveDuration: 100
+        highlightMoveDuration: isFirstLaunch ? 0 : 100
         highlight: Rectangle {
             anchors.horizontalCenter: parent.horizontalCenter
             color: "#00000000"
@@ -94,10 +97,18 @@ Item {
             /*When a button is clicked, move the highlight to the according button*/
             onClicked: {
                 listView.currentIndex = model.index
+                FunctionModel.fanLv = 5 - listView.currentIndex
+                if (!isFirstLaunch) {
+                    chooseFanSpdAnimation.start()
+                    chooseFanSpdAnimationScale.start()
+                }
+                isFirstLaunch = false
                 listView.forceActiveFocus()
-                chooseFanSpdAnimation.start()
-                chooseFanSpdAnimationScale.start()
             }
         }
+    }
+    Component.onCompleted: {
+        listView.currentIndex = 6;  // Chỉ số cho "Off"
+        FunctionModel.fanLv = 5 - listView.currentIndex; // Cập nhật giá trị fanLv
     }
 }

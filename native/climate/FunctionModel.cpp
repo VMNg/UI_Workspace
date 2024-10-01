@@ -60,3 +60,100 @@ void FunctionModel::dataTemperatureChanged(int data)
 {
     m_priv->sendDataTemp(data);
 }
+
+bool FunctionModel::activeRear() const
+{
+    return m_activeRear;
+}
+
+void FunctionModel::setActiveRear(bool newActiveRear)
+{
+    if (m_activeRear == newActiveRear)
+        return;
+    m_activeRear = newActiveRear;
+    qWarning() << "setActiveRear" << m_activeRear;
+    emit activeRearChanged();
+    dataActiveRearChanged(newActiveRear);
+}
+
+void FunctionModel::dataActiveRearChanged(bool data)
+{
+    m_priv->sendDataRear(data);
+}
+
+bool FunctionModel::activeFront() const
+{
+    return m_activeFront;
+}
+
+void FunctionModel::setActiveFront(bool newActiveFront)
+{
+    if (m_activeFront == newActiveFront)
+        return;
+    m_activeFront = newActiveFront;
+    qWarning() << "setActiveFront" << m_activeFront;
+    emit activeFrontChanged();
+    dataActiveFrontChanged(newActiveFront);
+}
+
+void FunctionModel::dataActiveFrontChanged(bool data)
+{
+    m_priv->sendDataFront(data);
+}
+
+bool FunctionModel::seatHeaterRStatus() const
+{
+    return m_seatHeaterRStatus;
+}
+
+void FunctionModel::setSeatHeaterRStatus(bool newSeatHeaterRStatus)
+{
+    if (m_seatHeaterRStatus == newSeatHeaterRStatus)
+        return;
+    m_seatHeaterRStatus = newSeatHeaterRStatus;
+    emit seatHeaterRStatusChanged();
+    dataSeatHeaterRStatusChanged(newSeatHeaterRStatus);
+}
+
+void FunctionModel::dataSeatHeaterRStatusChanged(bool data)
+{
+    m_priv->sendDataSeatR(data);
+}
+
+bool FunctionModel::seatHeaterLStatus() const
+{
+    return m_seatHeaterLStatus;
+}
+
+void FunctionModel::setSeatHeaterLStatus(bool newSeatHeaterLStatus)
+{
+    if (m_seatHeaterLStatus == newSeatHeaterLStatus)
+        return;
+    m_seatHeaterLStatus = newSeatHeaterLStatus;
+    emit seatHeaterLStatusChanged();
+    dataSeatHeaterLStatusChanged(newSeatHeaterLStatus);
+}
+
+void FunctionModel::dataSeatHeaterLStatusChanged(bool data)
+{
+    m_priv->sendDataSeatL(data);
+}
+
+int FunctionModel::fanLv() const
+{
+    return m_fanLv;
+}
+
+void FunctionModel::setFanLv(int newFanLv)
+{
+    if (m_fanLv == newFanLv)
+        return;
+    m_fanLv = newFanLv;
+    emit fanLvChanged();
+    dataFanLvChanged(newFanLv);
+}
+
+void FunctionModel::dataFanLvChanged(int data)
+{
+    m_priv->sendDataFanLv(data);
+}

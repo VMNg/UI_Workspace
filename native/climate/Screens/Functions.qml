@@ -1,5 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Controls
+import Climate.Models 1.0
 
 //============================== AC FUNCTION ==========================
 
@@ -10,6 +11,7 @@ Item {
     ButtonFunction {
         id: rear
 
+        textFunction: "Rear"
         anchors{
             right: parent.right
             top: parent.top
@@ -22,12 +24,12 @@ Item {
                 return "qrc:/image/rear-active.png"
             }
         }
-        textFunction: "Rear"
     }
 
     ButtonFunction {
         id: front
 
+        textFunction: "Front"
         anchors{
             right: rear.left
             rightMargin: 105
@@ -40,12 +42,12 @@ Item {
                 return "qrc:/image/front-defrost.png"
             }
         }
-        textFunction: "Front"
     }
 
     ButtonFunction {
         id: seatHeaterL
 
+        type: "SeatHeaterL"
         anchors{
             right: front.left
             rightMargin: 105
@@ -131,6 +133,7 @@ Item {
     ButtonFunction {
         id: seatHeaterR
 
+        type: "SeatHeaterR"
         anchors{
             left: moveSeat.right
             leftMargin: 105

@@ -24,5 +24,15 @@
         <file>iconDashboard/Untitled.png</file>
         <file>iconDashboard/Untitled2.png</file>
         <file>iconDashboard/Untitled3.png</file>
+        <file>iconClimate/active-seat-L.png</file>
+        <file>iconClimate/active-seat-R.png</file>
+        <file>iconClimate/defrost.png</file>
+        <file>iconClimate/front-defrost.png</file>
+        <file>iconClimate/rear.png</file>
+        <file>iconClimate/rear-active.png</file>
+        <file>iconClimate/seat-heater-L.png</file>
+        <file>iconClimate/seat-heater-R.png</file>
+        <file>iconClimate/fan.png</file>
+        <file>iconClimate/fan_active.png</file>
     </qresource>
 </RCC>

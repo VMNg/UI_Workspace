@@ -1,5 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
+import QtQuick.Controls
+
 Window {
     visible: true
     color: "#1E3A5F"
@@ -210,7 +212,7 @@ Window {
                 }
                 Text {
                     id: temp
-                    text: tempModel.temp
+                    text: ClimateModel.temp
                     font.pixelSize: 70
                     color: "#80FF00"
                     anchors{
@@ -297,6 +299,116 @@ Window {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 Layout.columnSpan: 3
+
+                property int level: ClimateModel.fanLv
+
+                Text {
+                    id: mode
+                    text: "A/C mode"
+                    font.pixelSize: 30
+                    color: "white"
+                    topPadding: 10
+                    anchors{
+                        right: parent.right
+                        rightMargin: 180
+                    }
+                }
+                GridLayout {
+                    id: imageGrid
+
+                    columns: 4
+                    rowSpacing: 10
+                    columnSpacing: 20
+                    anchors{
+                        top: mode.bottom
+                        topMargin: 10
+                        left: mode.left
+                        leftMargin: -5
+                    }
+
+                    Repeater {
+                        model: ListModel {
+                            ListElement { type: "seat-heater-L"; activeImage: "qrc:/iconClimate/active-seat-L.png" ; inactiveImage: "qrc:/iconClimate/seat-heater-L.png" }
+                            ListElement { type: "seat-heater-R"; activeImage: "qrc:/iconClimate/active-seat-R.png" ; inactiveImage: "qrc:/iconClimate/seat-heater-R.png" }
+                            ListElement { type: "front"; activeImage: "qrc:/iconClimate/front-defrost.png" ; inactiveImage: "qrc:/iconClimate/defrost.png" }
+                            ListElement { type: "rear"; activeImage: "qrc:/iconClimate/rear-active.png" ; inactiveImage: "qrc:/iconClimate/rear.png" }
+                        }
+
+                        delegate: Image {
+                            source: {
+                                if((model.type === "seat-heater-R" && ClimateModel.seatHeaterRStatus) ||(model.type === "seat-heater-L" && ClimateModel.seatHeaterLStatus) ||
+                                (model.type === "front" && ClimateModel.frontStatus)|| (model.type === "rear" && ClimateModel.rearStatus)){
+                                    return model.activeImage;
+                                }
+                                else{
+                                    return model.inactiveImage;
+                                }
+                            }
+                            width: 40
+                            height: 40
+                        }
+                    }
+                }
+
+                Text {
+                    id: acText
+                    text: "A/C"
+                    font.pixelSize: 30
+                    color: "white"
+                    topPadding: 10
+                    anchors{
+                        left: parent.left
+                        leftMargin: 30
+                    }
+                }
+                Image{
+                    id: acImage
+                    source : "qrc:/iconClimate/fan_active.png"
+                    anchors{
+                        top: acText.bottom
+                        topMargin: 15
+                        left: acText.left
+                        leftMargin: -5
+                    }
+                    width: 55
+                    height: 55
+                }
+                Row {
+                    id: acControl
+                    anchors{
+                        bottom : parent.bottom
+                        bottomMargin: 33
+                        left: parent.left
+                        leftMargin: 80
+                    }
+                    spacing: 4
+                    Repeater {
+                        model: 25
+
+                        Rectangle {
+                            width: 5
+                            height: 5 + index * 1.15
+                            color: {
+                                if (ac.level === -1) {
+                                    return "lightgray";
+                                }
+                                else if (ac.level === 0) {
+                                    // return "lightgreen";
+                                }
+                                else if (ac.level >= 1 && ac.level <= 5) {
+                                    return (index < (ac.level*5)) ? "lightgreen" : "lightgray";
+                                }
+                                else {
+                                    return "lightgray";
+                                }
+                            }
+                            radius: 3
+                            anchors{
+                                bottom: parent.bottom
+                            }
+                        }
+                    }
+                }
             }
 
             Rectangle{
