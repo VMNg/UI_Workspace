@@ -15,7 +15,6 @@ Window {
     }
 
     Row {
-        z: 9998
         id: topNavBar
         anchors {
             top: parent.top
@@ -27,24 +26,25 @@ Window {
             model: ApplicationManager
 
             delegate: Rectangle {
-                opacity: focusAppId == application.id ? 0.3 : 1.0
-                width: 1280/3
+                width: 1280 / 3
                 height: 100
-                color: "#1E3A5F"
+                color: "#2c4669"
+
                 Text {
                     anchors.centerIn: parent
                     text: application.name("en")
                     font.bold: true
-                    color: "white"
-                    font.pixelSize: 19
+                    font.pixelSize: (focusAppId === application.id) ? 24 : 19 // Change font size based on focus
+                    color: (focusAppId === application.id) ? "#80FF00" : "grey" // Change color based on focus
                 }
+
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        if (!isRunning){
+                        if (!isRunning) {
                             application.start();
                         }
-                        focusAppId = application.id
+                        focusAppId = application.id; // Set the focused app ID
                     }
                 }
             }
@@ -62,9 +62,6 @@ Window {
                 left: parent.left
                 bottom: parent.bottom
             }
-            color: "transparent"
-            border.width: 3
-            border.color: "white"
             z: model.index
             visible: model.appId == focusAppId
 

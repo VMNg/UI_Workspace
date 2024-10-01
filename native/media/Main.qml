@@ -10,13 +10,13 @@ Window{
     Rectangle {
         id: mainScreen
         anchors.fill: parent
-        color: "#1e1e1e"
+        color: "#2c4669"
 
         Rectangle {
             id: centerMusic
             width: 720
             height: 670
-            color: "#1e1e1e"
+            color: "#2c4669"
             anchors {
                 left: mainScreen.left
                 top: mainScreen.top

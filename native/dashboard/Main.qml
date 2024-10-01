@@ -4,7 +4,7 @@ import QtQuick.Controls
 
 Window {
     visible: true
-    color: "#1E3A5F"
+    color: "#2c4669"
     property string selectedOptionGear: ""
 
     Rectangle{
@@ -30,9 +30,8 @@ Window {
 
             Rectangle{
                 id: speed
-                border.width: 2
-                border.color: "white"
-                color: "transparent"
+
+                color: "#3c4b6c"
                 Layout.preferredWidth: 50
                 Layout.fillWidth: true
                 Layout.fillHeight: true
@@ -54,8 +53,8 @@ Window {
                         height: 200
                         radius: 180
                         border.color: "#80FF00"
-                        color: "transparent"
-                        border.width: 2
+                        color: "#3c4b6c"
+
                         anchors.horizontalCenter: parent.horizontalCenter
 
                         Column{
@@ -90,9 +89,8 @@ Window {
 
             Rectangle {
                 id: gear
-                border.width: 2
-                border.color: "white"
-                color: "transparent"
+
+                color: "#3c4b6c"
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 Layout.preferredWidth: 25
@@ -128,9 +126,8 @@ Window {
             }
             Rectangle{
                 id: doorLock
-                border.width: 2
-                border.color: "white"
-                color: "transparent"
+
+                color: "#3c4b6c"
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 Layout.maximumWidth: grid.width - gear.width - speed.width
@@ -190,9 +187,8 @@ Window {
 
             }
             Rectangle{
-                border.width: 2
-                border.color: "white"
-                color: "transparent"
+
+                color: "#3c4b6c"
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 Layout.preferredWidth: 50
@@ -237,9 +233,8 @@ Window {
             }
             Rectangle{
                 id: fuel
-                color: "transparent"
-                border.width: 2
-                border.color: "white"
+
+                color: "#3c4b6c"
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 Layout.preferredWidth: 50
@@ -293,9 +288,8 @@ Window {
 
             Rectangle{
                 id: ac
-                border.width: 2
-                border.color: "white"
-                color: "transparent"
+
+                color: "#3c4b6c"
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 Layout.columnSpan: 3
@@ -413,9 +407,8 @@ Window {
 
             Rectangle{
                 id: light
-                border.width: 2
-                border.color: "white"
-                color: "transparent"
+
+                color: "#3c4b6c"
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 Layout.preferredWidth: 50
@@ -472,9 +465,8 @@ Window {
             }
             Rectangle{
                 id: seatBelt
-                border.width: 2
-                border.color: "white"
-                color: "transparent"
+
+                color: "#3c4b6c"
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 Layout.preferredWidth: 50

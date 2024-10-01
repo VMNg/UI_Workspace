@@ -9,7 +9,7 @@ Rectangle {
 
     property string typeTemp
 
-    color: "#1E3A5F"
+    color: "#2c4669"
     width: 248
     height: 200
 
@@ -34,7 +34,7 @@ Rectangle {
 
         width: 65
         height: 60
-        color: "#1E3A5F"
+        color: "#2c4669"
         anchors.top: frontTemp.bottom
         anchors.horizontalCenter: frontTemp.horizontalCenter
 
@@ -103,7 +103,7 @@ Rectangle {
 
         width: 65
         height: 60
-        color: "#1E3A5F"
+        color: "#2c4669"
         anchors.bottom: frontTemp.top
         anchors.horizontalCenter: frontTemp.horizontalCenter
 
