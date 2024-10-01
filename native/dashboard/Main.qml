@@ -436,7 +436,7 @@ Window {
 
                     Image {
                         id: nearLight
-                        source: "qrc:/iconDashboard/NearOn.png"
+                        source: "qrc:/iconDashboard/NearOff.png"
                         width: 50
                         height: 50
                         z: 9999
@@ -454,7 +454,7 @@ Window {
 
                     Image {
                         id: farLight
-                        source: "qrc:/iconDashboard/FarOn.png"
+                        source: "qrc:/iconDashboard/FarOff.png"
                         width: 50
                         height: 50
                         MouseArea {
