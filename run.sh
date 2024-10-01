@@ -1,3 +1,3 @@
 #/bin/bash
 
-./build/mock-dev2.sh
+cd ./build/ && ./mock-dev2.sh
