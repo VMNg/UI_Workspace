@@ -14,7 +14,7 @@ Item {
     Rectangle {
         id: containerControl
         anchors.fill: parent
-        color: "grey"
+        color: "#2c4669"
 
         SliderMedia{
             id: mySlider

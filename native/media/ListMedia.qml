@@ -9,7 +9,7 @@ Item {
         id: listMusic
         width: 470
         height: 670
-        color: "#30336b"
+        color: "#2c4669"
 
         ListView {
             id: listSong
@@ -23,14 +23,12 @@ Item {
                 id: elementListView
                 width: 470
                 height: 50
-                color: "#fff2d7"
+                color: "#3c4b6c"
 
                 Rectangle {
                     visible: !isVideoScreen
                     anchors.fill: parent
-                    color: index === listSong.currentIndex ? "#7ed6df" : "#ffffff"
-                    border.color: "#130f40"
-                    border.width: 1
+                    color: index === listSong.currentIndex ? "#80FF00" : "#3c4b6c"
 
                     transitions: Transition {
                         NumberAnimation { properties: "color"; duration: 300 }
@@ -42,7 +40,7 @@ Item {
                     id: textNameSong
                     height: 20
                     text: nameSong
-                    color: "#f98866"
+                    color: "orange"
                     font.pixelSize: 20
                     font.family: "Arial"
                     anchors {
@@ -80,12 +78,12 @@ Item {
             delegate: Rectangle {
                 width: 470
                 height: 50
-                color: "#fff2d7"
+                color: "#3c4b6c"
 
                 Rectangle {
                     visible: isVideoScreen
                     anchors.fill: parent
-                    color: index === listVideo.currentIndex ? "#7ed6df" : "#ffffff"
+                    color: index === listVideo.currentIndex ? "#80FF00" : "#3c4b6c"
                     border.color: "#130f40"
                     border.width: 1
 
