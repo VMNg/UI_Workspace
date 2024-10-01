@@ -10,7 +10,7 @@ Rectangle {
 
     width: parent.width / 4
     height: parent.height
-    color: "#0f0f0f"
+    color: "#1E3A5F"
 
     Image {
         id: img

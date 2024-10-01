@@ -16,5 +16,9 @@
         <file>iconControlMedia/volume_high.png</file>
         <file>iconControlMedia/volume_medium.png</file>
         <file>iconControlMedia/volume_mute.png</file>
+        <file>iconDashboard/FarOff.png</file>
+        <file>iconDashboard/FarOn.png</file>
+        <file>iconDashboard/NearOff.png</file>
+        <file>iconDashboard/NearOn.png</file>
     </qresource>
 </RCC>

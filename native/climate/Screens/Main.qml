@@ -8,7 +8,7 @@ Window {
     Rectangle {
         id: climate
         anchors.fill: parent
-        color: "#0f0f0f"
+        color: "#1E3A5F"
 
         /*Display front temperature */
         Temperature {

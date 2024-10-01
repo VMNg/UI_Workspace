@@ -3,6 +3,7 @@ import QtQuick.Layouts
 Window {
     visible: true
     color: "#1E3A5F"
+    property string selectedOptionGear: ""
 
     Rectangle{
         anchors{
@@ -27,72 +28,158 @@ Window {
 
             Rectangle{
                 id: speed
-                color: "grey"
-                opacity: 0.1
+                border.width: 2
+                border.color: "white"
+                color: "transparent"
                 Layout.preferredWidth: 50
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 Layout.rowSpan: 2
+
+                Column{
+                    id: speedColumn
+                    spacing: 30
+                    anchors.fill:parent
+                    Text{
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        font.pixelSize: 30
+                        id: txtSpeed
+                        text: "Speed"
+                        color: "white"
+                    }
+                    Rectangle {
+                        width: 200
+                        height: 200
+                        radius: 180
+                        border.color: "#80FF00"
+                        color: "transparent"
+                        border.width: 2
+                        anchors.horizontalCenter: parent.horizontalCenter
+
+                        Column{
+                            anchors.centerIn: parent
+                            spacing: 10
+                            Text{
+                                font.pixelSize: 30
+                                color: "white"
+                                text: "200"
+                            }
+                            Text{
+                                font.pixelSize: 30
+                                color: "white"
+                                text: "Km/h"
+                            }
+                        }
+                    }
+                    Text {
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        font.pixelSize: 30
+                        text: "ODO"
+                        color: "white"
+                    }
+                    Text {
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        font.pixelSize: 30
+                        text: "2024101 Km"
+                        color: "white"
+                    }
+                }
             }
 
-            Rectangle{
+            Rectangle {
                 id: gear
-                color: "grey"
-                opacity: 0.1
+                border.width: 2
+                border.color: "white"
+                color: "transparent"
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 Layout.preferredWidth: 25
                 Layout.preferredHeight: 50
                 Layout.rowSpan: 2
+
+
+                Column {
+                    spacing: 20
+                    anchors.centerIn: parent
+
+                    Text {
+                        text: "Gear"
+                        font.pixelSize: 30
+                        color: "white"
+                    }
+
+                    Repeater {
+                        model: ["P", "D", "N", "R"]
+                        delegate: Text {
+                            text: modelData
+                            font.bold: true
+                            font.pixelSize: 45
+                            color: (selectedOptionGear === modelData) ? "#80FF00" : "grey"
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: {
+                                    selectedOptionGear = modelData;
+                                }
+                            }
+                        }
+                    }
+                }
             }
             Rectangle{
                 id: doorLock
-                color: "white"
-                opacity: 1
+                border.width: 2
+                border.color: "white"
+                color: "transparent"
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 Layout.maximumWidth: grid.width - gear.width - speed.width
                 Layout.preferredHeight: 100
                 Layout.columnSpan: 3
                 Column{
+                    id: columnMedia
                     anchors.centerIn: parent
                     spacing: 30
                     Text{
                         id:txtSong
-                        anchors.horizontalCenter: parent.horizontalCenter
+                        anchors.horizontalCenter: columnMedia.horizontalCenter
                         text: funcProvider.songReceive
                         color: "#80FF00"
                         font.pixelSize:40
                     }
                     Row{
                         spacing: 30
-                        anchors.horizontalCenter: parent.horizontalCenter
+                        anchors.horizontalCenter: columnMedia.horizontalCenter
                         Image {
                             id: suffle
+                            opacity: 0.7
                             source: "qrc:/iconControlMedia/suffle.png"
                             width: 64
                             height: 64
                         }
                         Image {
                             id: previous
+                            opacity: 0.7
                             source: "qrc:/iconControlMedia/rewind-button.png"
                             width: 64
                             height: 64
                         }
                         Image {
                             id: play_stop
+                            opacity: 0.7
                             source:funcProvider.statePlay ? "qrc:/iconControlMedia/stop-button.png" :"qrc:/iconControlMedia/play-button-arrowhead.png"
                             width: 64
                             height: 64
                         }
                         Image {
                             id: next
+                            opacity: 0.7
                             source: "qrc:/iconControlMedia/forward-button.png"
                             width: 64
                             height: 64
                         }
                         Image {
                             id: modeMedia
+                            opacity: 0.7
                             source:"qrc:/iconControlMedia/playlist-song.png"
                             width: 64
                             height: 64
@@ -102,8 +189,9 @@ Window {
 
             }
             Rectangle{
-                color: "grey"
-                opacity: 0.1
+                border.width: 2
+                border.color: "white"
+                color: "transparent"
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 Layout.preferredWidth: 50
@@ -113,7 +201,7 @@ Window {
                     id: inside
                     text: "Inside"
                     font.pixelSize: 30
-                    color: "white"
+                    color: "orange"
                     anchors{
                         top: parent.top
                         topMargin: 10
@@ -125,7 +213,7 @@ Window {
                     id: temp
                     text: tempModel.temp
                     font.pixelSize: 70
-                    color: "white"
+                    color: "#80FF00"
                     anchors{
                         bottom: parent.bottom
                         bottomMargin: 15
@@ -136,7 +224,7 @@ Window {
                     id: degree
                     text: "°C"
                     font.pixelSize: 40
-                    color: "white"
+                    color: "#80FF00"
                     anchors{
                         bottom: parent.bottom
                         bottomMargin: 20
@@ -147,32 +235,130 @@ Window {
 
             }
             Rectangle{
-                color: "grey"
-                opacity: 0.1
+                id: fuel
+                color: "transparent"
+                border.width: 2
+                border.color: "white"
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 Layout.preferredWidth: 50
                 Layout.preferredHeight: 50
                 Layout.columnSpan: 2
+
+                Column {
+                    anchors.fill: parent
+                    spacing: 5
+
+                    Text {
+                        topPadding: 20
+                        text: "Fuel"
+                        font.pixelSize: 30
+                        color: "white"
+                        anchors.horizontalCenter: parent.horizontalCenter
+                    }
+
+                    Row {
+                        width: parent.width
+                        anchors {
+                            left: parent.left
+                            centerIn : parent
+                        }
+                        leftPadding: 100
+                        spacing: 20
+
+                        Text {
+                            text: "N"
+                            font.pixelSize: 30
+                            color: "white"
+                        }
+
+                        Rectangle {
+                            id: fuelLevel
+                            width: parent.width * 0.5
+                            height: 20
+                            color: "#80FF00"
+                            radius: 3
+                        }
+
+                        Text {
+                            text: "F"
+                            font.pixelSize: 30
+                            color: "white"
+                        }
+                    }
+                }
             }
             Rectangle{
-                color: "grey"
-                opacity: 0.1
+                id: infoAC
+                border.width: 2
+                border.color: "white"
+                color: "transparent"
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 Layout.columnSpan: 3
             }
             Rectangle{
-                color: "grey"
-                opacity: 0.1
+                id: light
+                border.width: 2
+                border.color: "white"
+                color: "transparent"
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 Layout.preferredWidth: 50
                 Layout.preferredHeight: 50
+
+                Text {
+                    text: "Light"
+                    font.pixelSize: 30
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    color: "white"
+                }
+
+                Row {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    topPadding: 30
+                    spacing: 30
+
+                    Image {
+                        id: nearLight
+                        source: "qrc:/iconDashboard/NearOn.png"
+                        width: 64
+                        height: 64
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                if (nearLight.source === "qrc:/iconDashboard/NearOn.png") {
+                                    nearLight.source = "qrc:/iconDashboard/NearOff.png";
+                                } else {
+                                    nearLight.source = "qrc:/iconDashboard/NearOn.png";
+                                }
+                            }
+                        }
+                    }
+
+                    Image {
+                        id: farLight
+                        source: "qrc:/iconDashboard/FarOn.png"
+                        width: 64
+                        height: 64
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                if (farLight.source === "qrc:/iconDashboard/FarOn.png") {
+                                    farLight.source = "qrc:/iconDashboard/FarOff.png";
+                                } else {
+                                    farLight.source = "qrc:/iconDashboard/FarOn.png";
+                                }
+                            }
+                        }
+                    }
+                }
             }
             Rectangle{
-                color: "grey"
-                opacity: 0.1
+                id: seatBelt
+                border.width: 2
+                border.color: "white"
+                color: "transparent"
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 Layout.preferredWidth: 50

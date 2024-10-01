@@ -35,7 +35,7 @@ Window {
                     anchors.centerIn: parent
                     text: application.name("en")
                     font.bold: true
-                    color: "grey"
+                    color: "white"
                     font.pixelSize: 19
                 }
                 MouseArea {
@@ -64,7 +64,7 @@ Window {
             }
             color: "transparent"
             border.width: 3
-            border.color: "grey"
+            border.color: "white"
             z: model.index
             visible: model.appId == focusAppId
 
@@ -118,6 +118,11 @@ Window {
                             "window":window,
                             "appId":appId
                             });
+
+            // Automatically start the Dashboard application
+            if (appId === "dashboard") {
+                focusAppId = appId; // Set focus to the Dashboard
+            }
         }
     }
 
@@ -129,5 +134,10 @@ Window {
                 ApplicationManager.startApplication(id);
             }
         }
+    }
+
+    Component.onCompleted: {
+        // Start the Dashboard application directly
+        ApplicationManager.startApplication("dashboard");
     }
 }

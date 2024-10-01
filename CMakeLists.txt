@@ -21,5 +21,5 @@ qt6_am_add_systemui_wrapper(mock-dev2
     EXTRA_FILES apps system-ui
 )
 
-add_subdirectory(imports)
+#add_subdirectory(imports)
 add_subdirectory(native)
