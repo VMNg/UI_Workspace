@@ -1,3 +1,3 @@
 #!/bin/bash
 
-./build/appPBL
+./build/UI_Workspace
