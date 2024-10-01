@@ -20,5 +20,9 @@
         <file>iconDashboard/FarOn.png</file>
         <file>iconDashboard/NearOff.png</file>
         <file>iconDashboard/NearOn.png</file>
+        <file>iconDashboard/seat-belt.png</file>
+        <file>iconDashboard/Untitled.png</file>
+        <file>iconDashboard/Untitled2.png</file>
+        <file>iconDashboard/Untitled3.png</file>
     </qresource>
 </RCC>

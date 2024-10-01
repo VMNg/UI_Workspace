@@ -97,7 +97,6 @@ Window {
                 Layout.preferredHeight: 50
                 Layout.rowSpan: 2
 
-
                 Column {
                     spacing: 20
                     anchors.centerIn: parent
@@ -201,7 +200,7 @@ Window {
                     id: inside
                     text: "Inside"
                     font.pixelSize: 30
-                    color: "orange"
+                    color: "white"
                     anchors{
                         top: parent.top
                         topMargin: 10
@@ -250,7 +249,7 @@ Window {
                     spacing: 5
 
                     Text {
-                        topPadding: 20
+                        topPadding: 10
                         text: "Fuel"
                         font.pixelSize: 30
                         color: "white"
@@ -274,6 +273,7 @@ Window {
 
                         Rectangle {
                             id: fuelLevel
+                            anchors.verticalCenter: parent.verticalCenter
                             width: parent.width * 0.5
                             height: 20
                             color: "#80FF00"
@@ -288,8 +288,9 @@ Window {
                     }
                 }
             }
+
             Rectangle{
-                id: infoAC
+                id: ac
                 border.width: 2
                 border.color: "white"
                 color: "transparent"
@@ -297,6 +298,7 @@ Window {
                 Layout.fillHeight: true
                 Layout.columnSpan: 3
             }
+
             Rectangle{
                 id: light
                 border.width: 2
@@ -311,19 +313,21 @@ Window {
                     text: "Light"
                     font.pixelSize: 30
                     anchors.horizontalCenter: parent.horizontalCenter
+                    topPadding: 10
                     color: "white"
                 }
 
                 Row {
                     anchors.horizontalCenter: parent.horizontalCenter
-                    topPadding: 30
-                    spacing: 30
+                    topPadding: 50
+                    spacing: 50
 
                     Image {
                         id: nearLight
                         source: "qrc:/iconDashboard/NearOn.png"
-                        width: 64
-                        height: 64
+                        width: 50
+                        height: 50
+                        z: 9999
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
@@ -339,8 +343,8 @@ Window {
                     Image {
                         id: farLight
                         source: "qrc:/iconDashboard/FarOn.png"
-                        width: 64
-                        height: 64
+                        width: 50
+                        height: 50
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
@@ -363,6 +367,28 @@ Window {
                 Layout.fillHeight: true
                 Layout.preferredWidth: 50
                 Layout.preferredHeight: 50
+
+                Column {
+                    anchors.fill: parent
+                    spacing: 20
+                    anchors.centerIn: parent
+
+                    Text {
+                        text: "Seat belts"
+                        font.pixelSize: 30
+                        color: "white"
+                        topPadding: 10
+                        anchors.horizontalCenter: parent.horizontalCenter
+                    }
+
+                    Image {
+                        source: "qrc:/iconDashboard/seat-belt.png"
+                        opacity: 0.6
+                        width: 50
+                        height: 50
+                        anchors.horizontalCenter: parent.horizontalCenter
+                    }
+                }
             }
         }
     }

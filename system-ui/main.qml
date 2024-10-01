@@ -118,10 +118,8 @@ Window {
                             "window":window,
                             "appId":appId
                             });
-
-            // Automatically start the Dashboard application
             if (appId === "dashboard") {
-                focusAppId = appId; // Set focus to the Dashboard
+                focusAppId = appId;
             }
         }
     }
@@ -137,7 +135,6 @@ Window {
     }
 
     Component.onCompleted: {
-        // Start the Dashboard application directly
         ApplicationManager.startApplication("dashboard");
     }
 }
