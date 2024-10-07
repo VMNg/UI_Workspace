@@ -432,7 +432,7 @@ Window {
                         source: "qrc:/iconDashboard/NearOff.png"
                         width: 50
                         height: 50
-                        property bool isActive: false
+                        property bool isActive: true
                         z: 9999
                         MouseArea {
                             anchors.fill: parent
