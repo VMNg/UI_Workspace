@@ -21,4 +21,6 @@ cat ~/.ssh/id_rsa.pub
 
 git clone git@github.com:VMNg/UI_Workspace.git
 
+for media: sudo apt install gstreamer1.0-libav ubuntu-restricted-extras
+
 
