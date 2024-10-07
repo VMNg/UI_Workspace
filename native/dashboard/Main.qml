@@ -432,14 +432,18 @@ Window {
                         source: "qrc:/iconDashboard/NearOff.png"
                         width: 50
                         height: 50
+                        property bool isActive: false
                         z: 9999
                         MouseArea {
                             anchors.fill: parent
-                            onClicked: {
-                                if (nearLight.source === "qrc:/iconDashboard/NearOn.png") {
-                                    nearLight.source = "qrc:/iconDashboard/NearOff.png";
+                            onReleased:  {
+                                console.log("Current source:", nearLight.source);
+                                if (nearLight.isActive === true) {
+                                    nearLight.source = "qrc:/iconDashboard/NearOn.png"
+                                    nearLight.isActive = false
                                 } else {
-                                    nearLight.source = "qrc:/iconDashboard/NearOn.png";
+                                    nearLight.source = "qrc:/iconDashboard/NearOff.png"
+                                    nearLight.isActive = true
                                 }
                             }
                         }
