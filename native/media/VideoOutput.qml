@@ -27,7 +27,7 @@ VideoRender{
                     videoRender.height = 420
                     isFullScreen = false
                 }else{
-                    videoRender.width = 852
+                    videoRender.width = 1280
                     videoRender.height = 620
                     isFullScreen = true
                 }
