@@ -451,19 +451,9 @@ Window {
 
                     Image {
                         id: farLight
-                        source: "qrc:/iconDashboard/FarOff.png"
+                        source: nearLight.isActive ? "qrc:/iconDashboard/FarOn.png" : "qrc:/iconDashboard/FarOff.png"
                         width: 50
                         height: 50
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: {
-                                if (farLight.source === "qrc:/iconDashboard/FarOn.png") {
-                                    farLight.source = "qrc:/iconDashboard/FarOff.png";
-                                } else {
-                                    farLight.source = "qrc:/iconDashboard/FarOn.png";
-                                }
-                            }
-                        }
                     }
                 }
             }
